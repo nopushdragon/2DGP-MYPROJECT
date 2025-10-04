@@ -8,30 +8,27 @@ from pico2d import *
 open_canvas(WIDTH, HEIGHT)
 from background import *
 from paint import *
-from character import *
+from characters import *
 from deltatime import *
 from start import *
+from stages import Stages
 
-gunman = characters[0]
-gunman.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
-
-hometown = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.png'),WIDTH/2,HEIGHT/2,960,800)
+party = []
+party.append(Characters[0])
+party.append(Characters[1])
+nowstage = Stages[0]
 
 def GameUpdate(dt):
-    InputKey()
-    gunman.Update(dt)
-    for b in gunman.projectile[::-1]:
+    nowstage.Update(dt)
+    for c in party:
+        c.Update(dt)
+    '''for b in gunman.projectile[::-1]:
         b.Update(dt)
         if not b.visible:
-            gunman.projectile.remove(b)
-
-    if gunman.flip == False and gunman.state == "walk":
-        hometown.Move(-200*dt)
-    elif gunman.flip == True and gunman.state == "walk":
-        hometown.Move(200*dt)
+            gunman.projectile.remove(b)'''
 
 
-def InputKey():
+'''def InputKey():
     events = get_events()
     if not gunman.state == "attack":
         for event in events:
@@ -51,7 +48,7 @@ def InputKey():
             elif event.type == SDL_KEYUP:
                 if event.key == SDLK_LEFT and gunman.flip == True or event.key == SDLK_RIGHT and gunman.flip == False:
                     gunman.state = "idle"
-
+'''
 
 def main():
     while True:

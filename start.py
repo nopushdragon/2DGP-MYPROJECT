@@ -11,7 +11,7 @@ def Update():
         if event.type == SDL_MOUSEBUTTONDOWN:
             mx, my = event.x, HEIGHT - event.y
             if( WIDTH//2 - 200 <= mx <= WIDTH//2 + 200 and HEIGHT//2 - 50 <= my <= HEIGHT//2 + 50):
-                gamemanager.nowScene = "stage1"
+                gamemanager.nowScene = "stage1_ready"
 
 def Draw():
     startBackground.clip_draw(0, 0, 1200, 800, WIDTH // 2, HEIGHT // 2)

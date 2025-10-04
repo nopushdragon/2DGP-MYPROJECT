@@ -8,9 +8,10 @@ def DrawAll(dt):
     if gamemanager.nowScene == "start":
         start.Draw()
     else:
-        gamemanager.hometown.Draw()
-        gamemanager.gunman.Draw(dt)
-        for b in gamemanager.gunman.projectile:
-            b.Draw()
+        gamemanager.nowstage.Draw()
+        for c in gamemanager.party:
+            c.Draw(dt)
+            for p in c.projectile:
+                p.Draw()
 
     gamemanager.update_canvas()

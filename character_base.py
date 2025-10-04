@@ -52,9 +52,9 @@ class Character:
 
     def Draw(self, dt):
         if self.flip:
-            self.anime[self.Update(dt)][self.frame].clip_composite_draw(0, 0, 100, 100, 0, 'h', self.x, self.y, 150, 150)
+            self.anime[self.Update(dt)][self.frame].clip_composite_draw(0, 0, 100, 100, 0, 'h', self.x, self.y, 200, 200)
         else:
-            self.anime[self.Update(dt)][self.frame].clip_draw(0, 0, 100, 100, self.x, self.y, 150, 150)
+            self.anime[self.Update(dt)][self.frame].clip_draw(0, 0, 100, 100, self.x, self.y, 200, 200)
 
     def Skill_1(self):
         pass
