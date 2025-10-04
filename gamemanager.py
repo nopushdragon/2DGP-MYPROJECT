@@ -1,39 +1,34 @@
+
 WIDTH = 1200
 HEIGHT = 800
+
+nowScene = None #start, main, stage1, stage2, stage3...
 
 from pico2d import *
 open_canvas(WIDTH, HEIGHT)
 from background import *
-from projectile import *
 from paint import *
-from character import characters
-import time
+from character import *
+from deltatime import *
+from start import *
 
 gunman = characters[0]
 gunman.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
 
 hometown = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.png'),WIDTH/2,HEIGHT/2,960,800)
 
-prev_time = get_time()
-def DeltaTime():
-    global prev_time
-    curr_time = get_time()
-    dt = curr_time - prev_time
-    prev_time = curr_time
-    return dt
-
 def GameUpdate(dt):
     InputKey()
     gunman.Update(dt)
     for b in gunman.projectile[::-1]:
-        b.update(dt)
+        b.Update(dt)
         if not b.visible:
             gunman.projectile.remove(b)
 
     if gunman.flip == False and gunman.state == "walk":
-        hometown.move(-200*dt)
+        hometown.Move(-200*dt)
     elif gunman.flip == True and gunman.state == "walk":
-        hometown.move(200*dt)
+        hometown.Move(200*dt)
 
 
 def InputKey():
@@ -57,16 +52,18 @@ def InputKey():
                 if event.key == SDLK_LEFT and gunman.flip == True or event.key == SDLK_RIGHT and gunman.flip == False:
                     gunman.state = "idle"
 
+
 def main():
     while True:
-        start = time.time()
         dt = DeltaTime()
 
-        GameUpdate(dt)
+        if nowScene == "start":
+            start.Update()
+        else:
+            GameUpdate(dt)
 
-        MapDraw(dt)
-        ObjectDraw(dt)
-        print(gunman.status)
-        elapsed = time.time() - start
-        time.sleep(max(0, 1 / 60 - elapsed))  # 60프레임 고정
+        DrawAll(dt)
+
+        if dt < 1 / 60:
+            delay((1 / 60) - dt)
     close_canvas()

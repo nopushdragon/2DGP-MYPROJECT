@@ -8,12 +8,12 @@ class BackGround:
         self.width = width
         self.height = height
 
-    def draw(self):
+    def Draw(self):
         self.image.clip_draw(0, 0, self.width, self.height, self.x, self.y)
         self.image.clip_draw(0, 0, self.width, self.height, self.x - self.width, self.y)
         self.image.clip_draw(0, 0, self.width, self.height, self.x + self.width, self.y)
 
-    def move(self, mx):
+    def Move(self, mx):
         self.x += mx
         if self.x > WIDTH:
             self.x -= self.width

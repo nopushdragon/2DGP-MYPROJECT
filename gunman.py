@@ -8,7 +8,7 @@ gunman = Character([
     [load_image(f'source\\character\\hope01_0{i}.png') for i in range(5, 8)]
 ], 600, 400, [])
 
-def shoot_override(self):
+def Skill_1_override(self):
     self.projectile.append(
         Projectile(
             [load_image(f'source\\projectile\\40241_s2_0{i}.png') for i in range(1, 5)],
@@ -17,4 +17,4 @@ def shoot_override(self):
         )
     )
 
-gunman.Shoot = shoot_override.__get__(gunman, Character)
+gunman.Skill_1 = Skill_1_override.__get__(gunman, Character)

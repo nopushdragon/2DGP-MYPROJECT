@@ -11,8 +11,8 @@ class Character:
         self.flip = flip
         self.projectile = projectile
         self.status = status
-        self.shootMotionEnd = False
-        self.shootMotionEndTimer = 0.0
+        self.attackMotionEnd = False
+        self.attackMotionEndTimer = 0.0
 
 
     def Update(self, dt):
@@ -31,16 +31,16 @@ class Character:
             idx = 0
 
         if self.state == "attack" and self.frame == len(self.anime[2]) - 1:
-            self.shootMotionEnd = True
+            self.attackMotionEnd = True
 
-        if self.shootMotionEnd:
-            self.shootMotionEndTimer += dt
-            if self.shootMotionEndTimer >= 1.0:
-                self.shootMotionEndTimer = 0.0
+        if self.attackMotionEnd:
+            self.attackMotionEndTimer += dt
+            if self.attackMotionEndTimer >= 1.0:
+                self.attackMotionEndTimer = 0.0
                 self.frame = 0
                 self.state = "idle"
-                self.shootMotionEnd = False
-                self.Shoot()
+                self.attackMotionEnd = False
+                self.Skill_1()
 
         if not (self.state == "attack" and self.frame == len(self.anime[2]) - 1):
             if self.frameTimer >= waitTime:
@@ -50,11 +50,17 @@ class Character:
         return idx  # 상태에 맞는 인덱스 반환
 
 
-    def draw(self, dt):
+    def Draw(self, dt):
         if self.flip:
-            self.anime[self.Update(dt)][self.frame].clip_composite_draw(0, 0, 100, 100, 0, 'h', self.x, self.y, 200, 200)
+            self.anime[self.Update(dt)][self.frame].clip_composite_draw(0, 0, 100, 100, 0, 'h', self.x, self.y, 150, 150)
         else:
-            self.anime[self.Update(dt)][self.frame].clip_draw(0, 0, 100, 100, self.x, self.y, 200, 200)
+            self.anime[self.Update(dt)][self.frame].clip_draw(0, 0, 100, 100, self.x, self.y, 150, 150)
 
-    def Shoot(self):
+    def Skill_1(self):
+        pass
+
+    def Skill_2(self):
+        pass
+
+    def Skill_2(self):
         pass

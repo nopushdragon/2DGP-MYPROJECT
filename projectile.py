@@ -14,7 +14,7 @@ class Projectile:
         self.flip = flip
         self.visible = visible
 
-    def update(self, dt):
+    def Update(self, dt):
         if self.visible:
             self.frameTimer += dt
 
@@ -33,7 +33,7 @@ class Projectile:
                     self.frame += 1'''
                 self.frame = (self.frame + 1) % len(self.anime)
 
-    def draw(self):
+    def Draw(self):
         if self.visible:
             if self.flip == False:
                 self.anime[self.frame].clip_draw(0, 0, self.width, self.height, self.x, self.y, 100, 30)
