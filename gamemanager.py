@@ -1,21 +1,20 @@
-from pico2d import *
-from object import *
-from paint import *
-
 WIDTH = 1200
 HEIGHT = 800
-open_canvas(WIDTH, HEIGHT)
 
-gunman = Character([
-    [load_image(f'source\\hope01_0{i}.png') for i in range(1, 3)],
-    [load_image(f'source\\hope01_0{i}.png') for i in range(3, 5)],
-    [load_image(f'source\\hope01_0{i}.png') for i in range(5, 8)]
-], WIDTH / 2, HEIGHT / 2)  # 컴프리헨션 사용
-bullet = []
+from pico2d import *
+open_canvas(WIDTH, HEIGHT)
+from background import *
+from projectile import *
+from paint import *
+from character import characters
+import time
+
+gunman = characters[0]
+gunman.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
+
+hometown = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.png'),WIDTH/2,HEIGHT/2,960,800)
 
 prev_time = get_time()
-
-
 def DeltaTime():
     global prev_time
     curr_time = get_time()
@@ -23,15 +22,18 @@ def DeltaTime():
     prev_time = curr_time
     return dt
 
-
 def GameUpdate(dt):
-    global bullet
     InputKey()
-    WaitForShoot(dt)
-    for b in bullet[::-1]:
+    gunman.Update(dt)
+    for b in gunman.projectile[::-1]:
         b.update(dt)
         if not b.visible:
-            bullet.remove(b)
+            gunman.projectile.remove(b)
+
+    if gunman.flip == False and gunman.state == "walk":
+        hometown.move(-200*dt)
+    elif gunman.flip == True and gunman.state == "walk":
+        hometown.move(200*dt)
 
 
 def InputKey():
@@ -39,10 +41,10 @@ def InputKey():
     if not gunman.state == "attack":
         for event in events:
             if event.type == SDL_KEYDOWN:
-                if event.key == SDLK_LEFT:
+                if event.key == SDLK_LEFT or event.key == ord("a") or event.key == ord("A"):
                     gunman.state = "walk"
                     gunman.flip = True
-                elif event.key == SDLK_RIGHT:
+                elif event.key == SDLK_RIGHT or event.key == ord("d") or event.key == ord("D"):
                     gunman.state = "walk"
                     gunman.flip = False
                 elif event.key == SDLK_SPACE:
@@ -55,40 +57,16 @@ def InputKey():
                 if event.key == SDLK_LEFT and gunman.flip == True or event.key == SDLK_RIGHT and gunman.flip == False:
                     gunman.state = "idle"
 
-
-shootMotionEnd = False
-shootMotionEndTimer = 0.0
-
-
-def WaitForShoot(dt):
-    global shootMotionEnd, shootMotionEndTimer
-
-    if gunman.state == "attack" and gunman.frame == len(gunman.anime[2]) - 1:
-        shootMotionEnd = True
-
-    if shootMotionEnd:
-        shootMotionEndTimer += dt
-        if shootMotionEndTimer >= 0.1:
-            shootMotionEndTimer = 0.0
-            gunman.frame = 0
-            gunman.state = "idle"
-            shootMotionEnd = False
-            Shoot()
-
-
-def Shoot():
-    global bullet
-    bullet.append(Projectile([load_image(f'source\\40241_s2_0{i}.png') for i in range(1, 5)],
-                             gunman.x + 100 - (200 * (int)(gunman.flip)), gunman.y - 30, 122, 66,
-                             500, 0, 0.0, 0.5, gunman.flip, True))
-
-
 def main():
-    while (True):
+    while True:
+        start = time.time()
         dt = DeltaTime()
+
         GameUpdate(dt)
 
         MapDraw(dt)
         ObjectDraw(dt)
-
+        print(gunman.status)
+        elapsed = time.time() - start
+        time.sleep(max(0, 1 / 60 - elapsed))  # 60프레임 고정
     close_canvas()
