@@ -15,8 +15,9 @@ from stages import Stages
 
 party = []
 party.append(Characters[0])
-party.append(Characters[1])
+
 nowstage = Stages[0]
+partylocate = [(100,400),(200,400),(300,400),(400,400)]
 
 def GameUpdate(dt):
     nowstage.Update(dt)
