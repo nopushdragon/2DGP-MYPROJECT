@@ -15,14 +15,18 @@ from stages import Stages
 
 party = []
 party.append(Characters[0])
+enemy = []
 
 nowstage = Stages[0]
 partylocate = [(100,400),(200,400),(300,400),(400,400)]
+enemylocate = [(800,400),(900,400),(1000,400),(1100,400)]
 
 def GameUpdate(dt):
     nowstage.Update(dt)
     for c in party:
         c.Update(dt)
+    for e in enemy:
+        e.Update(dt)
     '''for b in gunman.projectile[::-1]:
         b.Update(dt)
         if not b.visible:

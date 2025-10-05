@@ -1,4 +1,5 @@
 import gamemanager
+import speedbar
 from gamemanager import WIDTH, HEIGHT
 from pico2d import *
 from background import BackGround
@@ -10,8 +11,15 @@ stage1 = Stage()
 ground = load_image('source\\background\\stage1_ground.png')
 background = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.png'),WIDTH/2,HEIGHT/2,960,800)
 black = load_image('source\\background\\black.png')
-
 choiceChar = None
+
+
+
+def Reset():
+    global choiceChar
+    choiceChar = None
+    gamemanager.party = gamemanager.party[:1]
+    pass
 
 def UPDATE_overriding(self, dt):
     background.Move(-10 * dt)
@@ -53,10 +61,33 @@ def Draw_overriding(self):
         cnt += 1
     global choiceChar
     if choiceChar != None:
-        Draw_choice(choiceChar)
+        Draw_choiceBox(choiceChar)
 
 stage1.Draw = Draw_overriding.__get__(stage1, Stage)
 
-def Draw_choice(n):
+def Draw_choiceBox(n):
     choice_box = load_image('source\\ui\\choice_box.png')
     choice_box.clip_draw(0, 0, 88, 88, (n-1)*100+100, 90, 100, 100)
+
+def ready_overriding(self):
+    gamemanager.nowScene = "battle"
+    gamemanager.nowstage = gamemanager.Stages[0]
+
+    new_party = []  #party와 partylocate 순서 맞추기
+    for loc in gamemanager.partylocate:
+        found = None
+        for c in gamemanager.party:
+            if (c.x, c.y) == loc:
+                found = c
+                break
+        new_party.append(found)
+    gamemanager.party = new_party
+
+    # 게임 완료하면 speedbar에 spdNum의 speed 바에 각 캐릭터에 맞는 speed 넣어줌
+    '''cnt = 0
+    for n in gamemanager.party:
+        speedbar.spdNums[cnt].speed = gamemanager.party[cnt].speed
+        cnt += 1
+    for n in gamemanager.enemy:
+        speedbar.spdNums[cnt].speed = gamemanager.enemy[cnt - 4].speed
+        cnt += 1'''
