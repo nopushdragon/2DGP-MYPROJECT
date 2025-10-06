@@ -1,6 +1,7 @@
 import gamemanager
 from gamemanager import WIDTH, HEIGHT
 from pico2d import *
+import stage1.stage1 #임시
 
 startBackground = load_image('source\\background\\start.png')
 startButton = load_image('source\\background\\start_button.png')
@@ -12,6 +13,8 @@ def Update():
             mx, my = event.x, HEIGHT - event.y
             if( WIDTH//2 - 200 <= mx <= WIDTH//2 + 200 and HEIGHT//2 - 50 <= my <= HEIGHT//2 + 50):
                 gamemanager.nowScene = "stage1_ready"
+                import stage1
+                stage1.stage1.Reset() #임시
 
 def Draw():
     startBackground.clip_draw(0, 0, 1200, 800, WIDTH // 2, HEIGHT // 2)

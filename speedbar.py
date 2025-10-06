@@ -25,14 +25,25 @@ e3 = SpeedNum(load_image('source\\ui\\e3.png'))
 e4 = SpeedNum(load_image('source\\ui\\e4.png'))
 spdNums = [p1,p2,p3,p4,e1,e2,e3,e4]
 
-class Speedbar:
-    def Update(self):
-        for n in spdNums:
+def Update():
+    for n in spdNums:
+        if not n.speed == 0:
             n.Update()
-            # 여기에 속도 도착했을때 처리하고 battle에 아마 캐릭터 턴 넘겨줘야 할듯
+        # 여기에 속도 도착했을때 처리하고 battle에 아마 캐릭터 턴 넘겨줘야 할듯
 
-    def Draw(self):
-        speedBar.clip_draw(0, 0, 1200, 800, WIDTH // 2, 700, 800, 20)
-        for n in spdNums:
-            if not n.speed == 0:
-                n.Draw()
+def Draw():
+    speedBar.clip_draw(0, 0, 1200, 800, WIDTH // 2, 700, 800, 20)
+    for n in spdNums:
+        if not n.speed == 0:
+            n.Draw()
+
+def DrawLocateGuide():
+    cnt = 0
+    for _ in spdNums:
+        if cnt < 4:
+            locateGuide = load_image(f'source\\ui\\p{cnt+1}.png')
+            locateGuide.clip_draw(0, 0, 100, 100, 100+(100*cnt), 450, 20, 20)
+        else:
+            locateGuide = load_image(f'source\\ui\\e{cnt-3}.png')
+            locateGuide.clip_draw(0, 0, 100, 100, 800+(100*(cnt-4)), 450, 20, 20)
+        cnt += 1
