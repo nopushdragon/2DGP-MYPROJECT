@@ -1,6 +1,6 @@
 from pico2d import load_image
 from character_base import *
-from projectile import Projectile
+from skill import Skill
 
 asha = Character([
     [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(1, 3)],
@@ -8,7 +8,7 @@ asha = Character([
     [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [])
 
-asha.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
+asha.status = {"hp": 100, "atk": 50, "speed": 120}  # hp, attack, speed
 
 
 def Skill_1_override(self):

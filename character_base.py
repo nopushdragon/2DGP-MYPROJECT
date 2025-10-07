@@ -1,6 +1,6 @@
 
 class Character:
-    def __init__(self, anime, x, y, projectile, status = None,frame=0, frameTimer=0.0, state="idle", flip=False):
+    def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack
         self.anime = anime
         self.x = x
@@ -9,7 +9,7 @@ class Character:
         self.frameTimer = frameTimer
         self.state = state
         self.flip = flip
-        self.projectile = projectile
+        self.skill = skill
         self.status = status
         self.attackMotionEnd = False
         self.attackMotionEndTimer = 0.0
@@ -23,26 +23,33 @@ class Character:
         elif self.state == "walk":
             waitTime = 0.2
             idx = 1
-        elif self.state == "attack":
-            waitTime = 0.2
+        elif self.state == "skill_1" or self.state == "skill_2" or self.state == "skill_3":
+            self.attackMotionEnd = True
+            waitTime = 1.0
             idx = 2
         else:
-            waitTime = 0.5
+            waitTime = 2.0
             idx = 0
 
-        if self.state == "attack" and self.frame == len(self.anime[2]) - 1:
-            self.attackMotionEnd = True
+        if (self.state == "skill_1" or self.state == "skill_2" or self.state == "skill_3") and self.frame == len(self.anime[2]) - 1:
+            #self.attackMotionEnd = True
+            pass
 
         if self.attackMotionEnd:
             self.attackMotionEndTimer += dt
-            if self.attackMotionEndTimer >= 1.0:
+            if self.attackMotionEndTimer >= 3.0:
                 self.attackMotionEndTimer = 0.0
                 self.frame = 0
-                self.state = "idle"
                 self.attackMotionEnd = False
-                self.Skill_1()
+                '''if self.state == "skill_1":
+                    self.Skill_1()
+                elif self.state == "skill_2":
+                    self.Skill_2()
+                elif self.state == "skill_3":
+                    self.Skill_3()'''
+                self.state = "using_skill"
 
-        if not (self.state == "attack" and self.frame == len(self.anime[2]) - 1):
+        if not ((self.state == "skill_1" or self.state == "skill_2" or self.state == "skill_3") and self.frame == len(self.anime[2]) - 1):
             if self.frameTimer >= waitTime:
                 self.frameTimer = 0.0
                 self.frame = (self.frame + 1) % len(self.anime[idx])
@@ -62,5 +69,5 @@ class Character:
     def Skill_2(self):
         pass
 
-    def Skill_2(self):
+    def Skill_3(self):
         pass

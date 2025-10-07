@@ -1,5 +1,6 @@
 from pico2d import *
 from gamemanager import WIDTH
+import battle
 
 class SpeedNum:
     def __init__(self,image,x=1000,y=700,speed =0):
@@ -9,7 +10,7 @@ class SpeedNum:
         self.speed = speed
 
     def Update(self):
-        self.x -= self.speed
+        self.x -= self.speed/100
 
     def Draw(self):
         self.image.clip_draw(0, 0, 100, 100, self.x, self.y, 20, 20)
@@ -25,10 +26,22 @@ e3 = SpeedNum(load_image('source\\ui\\e3.png'))
 e4 = SpeedNum(load_image('source\\ui\\e4.png'))
 spdNums = [p1,p2,p3,p4,e1,e2,e3,e4]
 
-def Update():
-    for n in spdNums:
-        if not n.speed == 0:
-            n.Update()
+update_timer = 0.0
+def Update(dt):
+    global update_timer
+    update_timer += dt
+    if update_timer >= 0.001:
+        minX = 1000
+        speedTurn = -1
+        for n in spdNums:
+            if n.speed != 0:
+                n.Update()
+                if n.x < minX:
+                    minX = n.x
+                    speedTurn = spdNums.index(n)
+        update_timer = 0.0
+        if minX <= 210:
+            battle.nowTurn = speedTurn
         # 여기에 속도 도착했을때 처리하고 battle에 아마 캐릭터 턴 넘겨줘야 할듯
 
 def Draw():
@@ -36,8 +49,17 @@ def Draw():
     for n in spdNums:
         if not n.speed == 0:
             n.Draw()
+    cnt = 0
+    for _ in spdNums:
+        if cnt < 4:
+            locateGuide = load_image(f'source\\ui\\p{cnt + 1}.png')
+            locateGuide.clip_draw(0, 0, 100, 100, 100 + (100 * cnt), 450, 20, 20)
+        else:
+            locateGuide = load_image(f'source\\ui\\e{cnt - 3}.png')
+            locateGuide.clip_draw(0, 0, 100, 100, 800 + (100 * (cnt - 4)), 450, 20, 20)
+        cnt += 1
 
-def DrawLocateGuide():
+'''def DrawLocateGuide():
     cnt = 0
     for _ in spdNums:
         if cnt < 4:
@@ -46,4 +68,4 @@ def DrawLocateGuide():
         else:
             locateGuide = load_image(f'source\\ui\\e{cnt-3}.png')
             locateGuide.clip_draw(0, 0, 100, 100, 800+(100*(cnt-4)), 450, 20, 20)
-        cnt += 1
+        cnt += 1'''

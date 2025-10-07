@@ -1,6 +1,6 @@
 from pico2d import load_image
 from character_base import *
-from projectile import Projectile
+from skill import Skill
 
 handrick = Character([
     [load_image(f'source\\character\\handrick\\handrick01_0{i}.png') for i in range(1, 3)],
@@ -8,7 +8,7 @@ handrick = Character([
     [load_image(f'source\\character\\handrick\\handrick01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [])
 
-handrick.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
+handrick.status = {"hp": 100, "atk": 50, "speed": 80}  # hp, attack, speed
 
 
 def Skill_1_override(self):

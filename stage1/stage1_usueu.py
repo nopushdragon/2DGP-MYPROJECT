@@ -1,6 +1,6 @@
 from pico2d import load_image
 from character_base import *
-from projectile import Projectile
+from skill import Skill
 
 usueu = Character([
     [load_image(f'source\\character\\usueu\\usueu01_0{i}.png') for i in range(1, 3)],
