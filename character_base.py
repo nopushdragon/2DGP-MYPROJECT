@@ -1,6 +1,6 @@
 
 class Character:
-    def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False):
+    def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack
         self.anime = anime
         self.x = x
@@ -13,6 +13,7 @@ class Character:
         self.status = status
         self.attackMotionEnd = False
         self.attackMotionEndTimer = 0.0
+        self.name = name
 
 
     def Update(self, dt):
@@ -70,4 +71,7 @@ class Character:
         pass
 
     def Skill_3(self):
+        pass
+
+    def Draw_turn(self):
         pass

@@ -4,6 +4,7 @@ import speedbar
 import battle
 from pico2d import *
 
+
 def DrawAll(dt):
     gamemanager.clear_canvas()
 
@@ -11,58 +12,66 @@ def DrawAll(dt):
         start.Draw()
     else:
         if gamemanager.nowScene in "stage1_ready" or "battle":    #나중에 다른 stage도 or로 추가
-            gamemanager.nowstage.Draw()
-            for c in gamemanager.party: #아군 그리기
-                c.Draw(dt)
-            for e in gamemanager.enemy: #적 그리기
-                e.Draw(dt)
-            speedbar.Draw()
-            skill_cut(dt)
-            if not battle.nowTurn == -1:
-                gamemanager.party[battle.nowTurn].Draw_Icon()
+            if not battle.turnSkillUsed:
+                gamemanager.nowstage.Draw() #스테이지 배경 그리기
+                for c in gamemanager.party: #아군 그리기
+                    c.Draw(dt)
+                for e in gamemanager.enemy: #적 그리기
+                    e.Draw(dt)
+                speedbar.Draw()
+                HpUi_draw()
+                if not battle.nowTurn == -1:
+                    if battle.nowTurn < 4:
+                        gamemanager.party[battle.nowTurn].Draw_turn()
+                    else:
+                        gamemanager.enemy[battle.nowTurn-4].Draw_turn()
+                    skill_inform_draw()
+            elif battle.turnSkillUsed:
+                skill_cut(dt)
 
     gamemanager.update_canvas()
 
 def skill_cut(dt):
     if battle.turnSkillUsed:
-        balck = load_image('source\\background\\black.png')
-        balck.clip_draw(0, 0, 1200, 800, gamemanager.WIDTH // 2, gamemanager.HEIGHT // 2)
+        black = load_image('source\\background\\black.png')
+        black.clip_draw(0, 0, 1200, 800, gamemanager.WIDTH // 2, gamemanager.HEIGHT // 2)
         if battle.nowTurn < 4:
             gamemanager.party[battle.nowTurn].Draw(dt)
-            if gamemanager.party[battle.nowTurn].skill and gamemanager.party[battle.nowTurn].skill[0].type == "enemy_solo":
-                if battle.target is not None:
-                    battle.target.Draw(dt)
-            elif gamemanager.party[battle.nowTurn].skill and gamemanager.party[battle.nowTurn].skill[0].type == "party_solo":
-                if battle.target is not None:
-                    battle.target.Draw(dt)
-            elif gamemanager.party[battle.nowTurn].skill and gamemanager.party[battle.nowTurn].skill[0].type == "enemy_all":
-                for e in gamemanager.enemy:
-                    e.Draw(dt)
-            elif gamemanager.party[battle.nowTurn].skill and gamemanager.party[battle.nowTurn].skill[0].type == "party_all":
-                for c in gamemanager.party:
-                    c.Draw(dt)
-
+            if not len(battle.target) == 0:
+                for t in battle.target:
+                    t.Draw(dt)
             if not gamemanager.party[battle.nowTurn].attackMotionEnd:
                 for c in gamemanager.party[battle.nowTurn].skill:
                     c.Draw()
+            gamemanager.party[battle.nowTurn].Draw_turn()
         else:
-            if gamemanager.enemy[battle.nowTurn - 4].skill and gamemanager.enemy[battle.nowTurn - 4].skill[0].type == "enemy_solo":
-                gamemanager.enemy[battle.nowTurn - 4].Draw(dt)
-                if battle.target is not None:
-                    battle.target.Draw(dt)
-            elif gamemanager.enemy[battle.nowTurn - 4].skill and gamemanager.enemy[battle.nowTurn - 4].skill[0].type == "party_solo":
-                gamemanager.enemy[battle.nowTurn - 4].Draw(dt)
-                if battle.target is not None:
-                    battle.target.Draw(dt)
-            elif gamemanager.enemy[battle.nowTurn - 4].skill and gamemanager.enemy[battle.nowTurn - 4].skill[0].type == "enemy_all":
-                gamemanager.enemy[battle.nowTurn - 4].Draw(dt)
-                for c in gamemanager.party:
-                    c.Draw(dt)
-            elif gamemanager.enemy[battle.nowTurn - 4].skill and gamemanager.enemy[battle.nowTurn - 4].skill[0].type == "party_all":
-                gamemanager.enemy[battle.nowTurn - 4].Draw(dt)
-                for e in gamemanager.enemy:
-                    e.Draw(dt)
-
+            gamemanager.party[battle.nowTurn-4].Draw(dt)
+            if not len(battle.target) == 0:
+                for t in battle.target:
+                    t.Draw(dt)
             if not gamemanager.enemy[battle.nowTurn - 4].attackMotionEnd:
                 for c in gamemanager.enemy[battle.nowTurn - 4].skill:
                     c.Draw()
+            gamemanager.enemy[battle.nowTurn - 4].Draw_turn()
+
+def skill_inform_draw():
+    informBox = load_image('source\\ui\\choice_box.png')
+    if battle.skillInform == "skill_1":
+        informBox.clip_draw(0, 0, 88, 88, 850, 100, 110, 110)
+    elif battle.skillInform == "skill_2":
+        informBox.clip_draw(0, 0, 88, 88, 975, 100, 110, 110)
+    elif battle.skillInform == "skill_3":
+        informBox.clip_draw(0, 0, 88, 88, 1100, 100, 110, 110)
+
+hp_font = load_font('source\\ui\\DungGeunMo.ttf',25)
+def HpUi_draw():
+    if gamemanager.nowScene == "battle":
+        for n in speedbar.spdNums:
+            if speedbar.spdNums.index(n) < 4:
+                n.image.clip_draw(0, 0, 100, 100, 380, 180-(50*speedbar.spdNums.index(n)), 20, 20)
+                hp_font.draw(400,180-(50*speedbar.spdNums.index(n)),
+                    f'{gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"]}/{gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"]}', (220, 220, 220))
+            else:
+                n.image.clip_draw(0, 0, 100, 100, 580, 180-(50*(speedbar.spdNums.index(n)-4)), 20, 20)
+                hp_font.draw(600,180-(50*(speedbar.spdNums.index(n)-4)),
+                    f'{gamemanager.enemy[speedbar.spdNums.index(n)-4].status["nowhp"]}/{gamemanager.enemy[speedbar.spdNums.index(n)-4].status["maxhp"]}', (220, 220, 220))

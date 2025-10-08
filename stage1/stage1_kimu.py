@@ -8,7 +8,7 @@ kimu = Character([
     [load_image(f'source\\character\\kimu\\kimu01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],flip= True)
 
-kimu.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
+kimu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[]}  # nowhp, maxhp, attack, speed
 
 
 def Skill_1_override(self):

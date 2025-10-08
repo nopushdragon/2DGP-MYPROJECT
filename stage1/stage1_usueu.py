@@ -8,7 +8,7 @@ usueu = Character([
     [load_image(f'source\\character\\usueu\\usueu01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],flip=True)
 
-usueu.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
+usueu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 98, "condition":[]}  # nowhp, maxhp, attack, speed
 
 
 def Skill_1_override(self):

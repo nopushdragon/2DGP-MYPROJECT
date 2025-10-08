@@ -26,3 +26,6 @@ class Skill:
                 self.anime[self.frame].clip_draw(0, 0, self.width, self.height, self.x, self.y, 100, 30)
             elif self.flip == True:
                 self.anime[self.frame].clip_composite_draw(0, 0, self.width, self.height, 0, 'h', self.x, self.y, 100, 30)
+
+    def apply_effect(self, target, damage):
+        pass

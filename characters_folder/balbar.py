@@ -6,9 +6,9 @@ balbar = Character([
     [load_image(f'source\\character\\balbar\\balbar01_0{i}.png') for i in range(1, 3)],
     [load_image(f'source\\character\\balbar\\balbar01_0{i}.png') for i in range(3, 5)],
     [load_image(f'source\\character\\balbar\\balbar01_0{i}.png') for i in range(5, 8)]
-], 100, 400, [])
+], 100, 400, [],name = "발바")
 
-balbar.status = {"hp": 100, "atk": 50, "speed": 100}  # hp, attack, speed
+balbar.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 85, "condition":[]}  # nowhp, maxhp, attack, speed
 
 
 def Skill_1_override(self):
