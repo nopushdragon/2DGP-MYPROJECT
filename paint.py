@@ -15,9 +15,9 @@ def DrawAll(dt):
             if not battle.turnSkillUsed:
                 gamemanager.nowstage.Draw() #스테이지 배경 그리기
                 for c in gamemanager.party: #아군 그리기
-                    c.Draw(dt)
+                    c.Draw()
                 for e in gamemanager.enemy: #적 그리기
-                    e.Draw(dt)
+                    e.Draw()
                 speedbar.Draw()
                 HpUi_draw()
                 if not battle.nowTurn == -1:
@@ -27,28 +27,28 @@ def DrawAll(dt):
                         gamemanager.enemy[battle.nowTurn-4].Draw_turn()
                     skill_inform_draw()
             elif battle.turnSkillUsed:
-                skill_cut(dt)
+                skill_cut()
 
     gamemanager.update_canvas()
 
-def skill_cut(dt):
+def skill_cut(dt=None):
     if battle.turnSkillUsed:
         black = load_image('source\\background\\black.png')
         black.clip_draw(0, 0, 1200, 800, gamemanager.WIDTH // 2, gamemanager.HEIGHT // 2)
         if battle.nowTurn < 4:
-            gamemanager.party[battle.nowTurn].Draw(dt)
+            gamemanager.party[battle.nowTurn].Draw()
             if not len(battle.target) == 0:
                 for t in battle.target:
-                    t.Draw(dt)
+                    t.Draw()
             if not gamemanager.party[battle.nowTurn].attackMotionEnd:
                 for c in gamemanager.party[battle.nowTurn].skill:
                     c.Draw()
             gamemanager.party[battle.nowTurn].Draw_turn()
         else:
-            gamemanager.party[battle.nowTurn-4].Draw(dt)
+            gamemanager.party[battle.nowTurn-4].Draw()
             if not len(battle.target) == 0:
                 for t in battle.target:
-                    t.Draw(dt)
+                    t.Draw()
             if not gamemanager.enemy[battle.nowTurn - 4].attackMotionEnd:
                 for c in gamemanager.enemy[battle.nowTurn - 4].skill:
                     c.Draw()

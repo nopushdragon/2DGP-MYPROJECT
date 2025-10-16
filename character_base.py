@@ -1,4 +1,3 @@
-
 class Character:
     def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack
@@ -14,6 +13,8 @@ class Character:
         self.attackMotionEnd = False
         self.attackMotionEndTimer = 0.0
         self.name = name
+        # 현재 애니메이션 인덱스 저장용
+        self.anim_idx = 0
 
 
     def Update(self, dt):
@@ -31,6 +32,9 @@ class Character:
         else:
             waitTime = 2.0
             idx = 0
+
+        # 현재 상태에 맞는 애니메이션 인덱스 저장
+        self.anim_idx = idx
 
         if (self.state == "skill_1" or self.state == "skill_2" or self.state == "skill_3") and self.frame == len(self.anime[2]) - 1:
             #self.attackMotionEnd = True
@@ -58,11 +62,12 @@ class Character:
         return idx  # 상태에 맞는 인덱스 반환
 
 
-    def Draw(self, dt):
+    def Draw(self):
+        # Update는 GameUpdate에서 한 번만 호출되도록 변경했으므로 Draw에서는 상태를 바꾸지 않습니다.
         if self.flip:
-            self.anime[self.Update(dt)][self.frame].clip_composite_draw(0, 0, 100, 100, 0, 'h', self.x, self.y, 200, 200)
+            self.anime[self.anim_idx][self.frame].clip_composite_draw(0, 0, 100, 100, 0, 'h', self.x, self.y, 200, 200)
         else:
-            self.anime[self.Update(dt)][self.frame].clip_draw(0, 0, 100, 100, self.x, self.y, 200, 200)
+            self.anime[self.anim_idx][self.frame].clip_draw(0, 0, 100, 100, self.x, self.y, 200, 200)
 
     def Skill_1(self):
         pass

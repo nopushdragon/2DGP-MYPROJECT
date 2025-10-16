@@ -21,6 +21,10 @@ nowstage = []
 partylocate = [(100,400),(200,400),(300,400),(400,400)]
 enemylocate = [(800,400),(900,400),(1000,400),(1100,400)]
 
+TARGET_FPS = 60.0
+TARGET_DT = 1.0 / TARGET_FPS
+
+
 def GameUpdate(dt):
     nowstage.Update(dt)
     if nowScene == "battle":
@@ -32,7 +36,9 @@ def GameUpdate(dt):
 
 def main():
     while True:
-        dt = DeltaTime()
+        frame_start = get_time()
+
+        dt = TARGET_DT
 
         if nowScene == "start":
             start.Update()
@@ -41,6 +47,8 @@ def main():
 
         DrawAll(dt)
 
-        if dt < 1 / 60:
-            delay((1 / 60) - dt)
+        frame_time = get_time() - frame_start
+        sleep_time = TARGET_DT - frame_time
+        if sleep_time > 0:
+            delay(sleep_time)
     close_canvas()
