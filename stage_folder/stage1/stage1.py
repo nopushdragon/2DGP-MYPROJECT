@@ -1,9 +1,9 @@
 import gamemanager
-import speedbar
+from .. import speedbar
 from gamemanager import WIDTH, HEIGHT
 from pico2d import *
-from background import BackGround
-from stage_base import Stage
+from stage_folder.background import BackGround
+from stage_folder.stage_base import Stage
 from characters import Characters
 
 from .stage1_enemys import enemys

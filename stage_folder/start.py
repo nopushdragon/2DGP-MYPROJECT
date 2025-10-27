@@ -13,8 +13,8 @@ def Update():
             mx, my = event.x, HEIGHT - event.y
             if( WIDTH//2 - 200 <= mx <= WIDTH//2 + 200 and HEIGHT//2 - 50 <= my <= HEIGHT//2 + 50):
                 gamemanager.nowScene = "stage1_ready"
-                import stage1
-                stage1.stage1.Reset() #임시
+                import stage_folder.stage1
+                stage_folder.stage1.stage1.Reset() #임시
                 gamemanager.nowstage = Stages[0]
 
 def Draw():

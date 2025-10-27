@@ -1,6 +1,5 @@
 from pico2d import load_image
-from character_base import *
-from skill import Skill
+from characters_folder.character_base import *
 
 kimu = Character([
     [load_image(f'source\\character\\kimu\\kimu01_0{i}.png') for i in range(1, 3)],

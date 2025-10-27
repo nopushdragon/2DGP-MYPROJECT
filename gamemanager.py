@@ -5,12 +5,9 @@ nowScene = None #start, main, stage1, stage2, stage3...
 
 from pico2d import *
 open_canvas(WIDTH, HEIGHT)
-from background import *
 from paint import *
 from characters import *
-from deltatime import *
-from start import *
-from stages import Stages
+from stage_folder.start import *
 import battle
 
 party = []

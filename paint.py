@@ -1,6 +1,5 @@
 import gamemanager
-import start
-import speedbar
+from stage_folder import start, speedbar
 import battle
 from pico2d import *
 
@@ -55,7 +54,7 @@ def skill_cut(dt=None):
             gamemanager.enemy[battle.nowTurn - 4].Draw_turn()
 
 def skill_inform_draw():
-    informBox = load_image('source\\ui\\choice_box.png')
+    informBox = load_image('source\\ui\\skill_choice_box.png')
     if battle.skillInform == "skill_1":
         informBox.clip_draw(0, 0, 88, 88, 850, 100, 110, 110)
     elif battle.skillInform == "skill_2":
@@ -68,10 +67,10 @@ def HpUi_draw():
     if gamemanager.nowScene == "battle":
         for n in speedbar.spdNums:
             if speedbar.spdNums.index(n) < 4:
-                n.image.clip_draw(0, 0, 100, 100, 380, 180-(50*speedbar.spdNums.index(n)), 20, 20)
-                hp_font.draw(400,180-(50*speedbar.spdNums.index(n)),
+                n.image.clip_draw(0, 0, 100, 100, 380, 180 - (50 * speedbar.spdNums.index(n)), 20, 20)
+                hp_font.draw(400, 180 - (50 * speedbar.spdNums.index(n)),
                     f'{gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"]}/{gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"]}', (220, 220, 220))
             else:
-                n.image.clip_draw(0, 0, 100, 100, 580, 180-(50*(speedbar.spdNums.index(n)-4)), 20, 20)
-                hp_font.draw(600,180-(50*(speedbar.spdNums.index(n)-4)),
-                    f'{gamemanager.enemy[speedbar.spdNums.index(n)-4].status["nowhp"]}/{gamemanager.enemy[speedbar.spdNums.index(n)-4].status["maxhp"]}', (220, 220, 220))
+                n.image.clip_draw(0, 0, 100, 100, 580, 180 - (50 * (speedbar.spdNums.index(n) - 4)), 20, 20)
+                hp_font.draw(600, 180 - (50 * (speedbar.spdNums.index(n) - 4)),
+                    f'{gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["nowhp"]}/{gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["maxhp"]}', (220, 220, 220))

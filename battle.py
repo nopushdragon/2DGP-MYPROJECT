@@ -1,9 +1,9 @@
 # 여기 stage에서 ready 끝나면 gamemanager에서 battle.update로 바꿀거임
 # 어떤 stage가 와도 같은 방식으로 작동하도록 구현해야함
 from pico2d import *
-import speedbar
+from stage_folder import speedbar
 import gamemanager
-from gamemanager import WIDTH, HEIGHT
+from gamemanager import HEIGHT
 import random
 
 nowTurn = -1  # -1이면 스피드바 진행, 0~3이면 아군 턴, 4~7이면 적군 턴
@@ -35,24 +35,36 @@ def Update(dt):
                         if skillInform == "skill_1":
                             nowChar.state = "skill_1"
                             nowChar.Skill_1()
-                            turnSkillUsed = True
+                            nowChar.frame = 0
                             nowChar.frameTimer = 0.0
+                            nowChar.attackMotionEnd = False
+                            nowChar.attackMotionEndTimer = 0.0
+                            turnSkillUsed = True
+                            skillInform = None
                         else:
                             skillInform = "skill_1"
                     elif (925 <= mx <= 1025 and 50 <= my <= 150):
                         if skillInform == "skill_2":
                             nowChar.state = "skill_2"
                             nowChar.Skill_2()
-                            turnSkillUsed = True
+                            nowChar.frame = 0
                             nowChar.frameTimer = 0.0
+                            nowChar.attackMotionEnd = False
+                            nowChar.attackMotionEndTimer = 0.0
+                            turnSkillUsed = True
+                            skillInform = None
                         else:
                             skillInform = "skill_2"
                     elif (1050 <= mx <= 1150 and 50 <= my <= 150):
                         if skillInform == "skill_3":
                             nowChar.state = "skill_3"
                             nowChar.Skill_3()
-                            turnSkillUsed = True
+                            nowChar.frame = 0
                             nowChar.frameTimer = 0.0
+                            nowChar.attackMotionEnd = False
+                            nowChar.attackMotionEndTimer = 0.0
+                            turnSkillUsed = True
+                            skillInform = None
                         else:
                             skillInform = "skill_3"
 

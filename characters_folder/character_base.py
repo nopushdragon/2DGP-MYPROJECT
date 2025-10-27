@@ -1,4 +1,11 @@
 class Character:
+    illust = None
+    nameBox = None
+    namefont = None
+    skill_1_icon = None
+    skill_2_icon = None
+    skill_3_icon = None
+
     def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack
         self.anime = anime
@@ -20,14 +27,14 @@ class Character:
     def Update(self, dt):
         self.frameTimer += dt
         if self.state == "idle":
-            waitTime = 2.0
+            waitTime = 1.0
             idx = 0
         elif self.state == "walk":
             waitTime = 0.2
             idx = 1
         elif self.state == "skill_1" or self.state == "skill_2" or self.state == "skill_3":
             self.attackMotionEnd = True
-            waitTime = 1.0
+            waitTime = 0.3
             idx = 2
         else:
             waitTime = 2.0
@@ -42,7 +49,7 @@ class Character:
 
         if self.attackMotionEnd:
             self.attackMotionEndTimer += dt
-            if self.attackMotionEndTimer >= 3.0:
+            if self.attackMotionEndTimer >= 1.0 + waitTime * 2:
                 self.attackMotionEndTimer = 0.0
                 self.frame = 0
                 self.attackMotionEnd = False
