@@ -9,6 +9,7 @@ from paint import *
 from characters import *
 from stage_folder.start import *
 import battle
+import fade
 
 party = []
 party.append(Characters[0])
@@ -41,6 +42,7 @@ def main():
             start.Update()
         else:
             GameUpdate(dt)
+        fade.update()
 
         DrawAll(dt)
 

@@ -2,6 +2,7 @@ import gamemanager
 from stage_folder import start, speedbar
 import battle
 from pico2d import *
+import fade
 
 
 def DrawAll(dt):
@@ -28,6 +29,7 @@ def DrawAll(dt):
             elif battle.turnSkillUsed:
                 skill_cut()
 
+    fade.draw()
     gamemanager.update_canvas()
 
 def skill_cut(dt=None):

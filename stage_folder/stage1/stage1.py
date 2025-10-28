@@ -2,7 +2,7 @@ import gamemanager
 from .. import speedbar
 from gamemanager import WIDTH, HEIGHT
 from pico2d import *
-from stage_folder.background import BackGround
+from stage_folder.background_base import BackGround
 from stage_folder.stage_base import Stage
 from characters import Characters
 
@@ -15,7 +15,7 @@ background = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.pn
 black = load_image('source\\background\\black.png')
 choiceChar = None
 
-def Reset():
+def Reset(self):
     global choiceChar
     choiceChar = None
     import gamemanager
@@ -27,6 +27,8 @@ def Reset():
         e.x = gamemanager.enemylocate[cnt][0]
         e.y = gamemanager.enemylocate[cnt][1]
         cnt += 1
+# Bind Reset as an instance method so Stage instances have Reset()
+stage1.Reset = Reset.__get__(stage1, Stage)
 
 def UPDATE_overriding(self, dt):
     background.Move(-10 * dt)
