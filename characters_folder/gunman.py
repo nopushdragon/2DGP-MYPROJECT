@@ -7,10 +7,10 @@ gunman = Character([
     gunman_idle_anime,
     gunman_move_anime,
     gunman_attack_anime
-], 100, 400, [],name = "건 맨")
+], 100, 400, [],name = "건 맨", get = True)
 
 # ui에 필요한 리소스들
-gunman.illust = load_image('source\\skill_icon\\gunman\\hero_illust_11_Hope.png')
+gunman.illust = load_image('source\\character\\hope\\hero_illust_11_Hope.png')
 gunman.nameBox = load_image('source\\ui\\namebox.png')
 gunman.namefont = load_font('source\\ui\\DungGeunMo.ttf', 40)
 gunman.skill_1_icon = load_image(f'source\\skill_icon\\gunman\\hope_1103.png')

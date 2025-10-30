@@ -8,5 +8,8 @@ class Stage :
     def Update(self, dt):
         pass
 
-    def Draw(self):
+    def Draw_background(self):
+        pass
+
+    def Draw_choicechar(self):
         pass

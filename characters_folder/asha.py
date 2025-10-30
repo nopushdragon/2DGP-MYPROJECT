@@ -6,10 +6,10 @@ asha = Character([
     [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(1, 3)],
     [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(3, 5)],
     [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(5, 8)]
-], 100, 400, [],name = "아샤")
+], 100, 400, [],name = "아샤", get = True)
 
 # ui에 필요한 리소스들
-asha.illust = load_image('source\\skill_icon\\asha\\hero_illust_09_Asha.png')
+asha.illust = load_image('source\\character\\asha\\hero_illust_09_Asha.png')
 asha.nameBox = load_image('source\\ui\\namebox.png')
 asha.namefont = load_font('source\\ui\\DungGeunMo.ttf', 40)
 asha.skill_1_icon = load_image(f'source\\skill_icon\\asha\\asha_0904.png')

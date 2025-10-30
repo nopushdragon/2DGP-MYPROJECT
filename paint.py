@@ -17,7 +17,8 @@ def DrawAll(dt):
     else:
         if gamemanager.nowScene in "stage1_ready" or "battle":    #나중에 다른 stage도 or로 추가
             if not battle.turnSkillUsed:
-                gamemanager.nowstage.Draw() #스테이지 배경 그리기
+                gamemanager.nowstage.Draw_background() #스테이지 배경 그리기
+                if not gamemanager.nowScene == "battle": gamemanager.nowstage.Draw_choicechar()
                 for c in gamemanager.party: #아군 그리기
                     if c.status["nowhp"] > 0:
                         c.Draw()
@@ -53,7 +54,7 @@ def skill_cut(dt=None):
                     c.Draw()
             gamemanager.party[battle.nowTurn].Draw_turn()
         else:
-            gamemanager.party[battle.nowTurn-4].Draw()
+            gamemanager.enemy[battle.nowTurn-4].Draw()
             if not len(battle.target) == 0:
                 for t in battle.target:
                     t.Draw()

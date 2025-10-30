@@ -8,7 +8,7 @@ kimu = Character([
     [load_image(f'source\\character\\kimu\\kimu01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],name = "키무")
 
-kimu.illust = load_image('source\\skill_icon\\asha\\hero_illust_09_asha.png')
+kimu.illust = load_image('source\\character\\kimu\\hero_illust_04_Kimu.png')
 kimu.nameBox = load_image('source\\ui\\namebox.png')
 kimu.namefont = load_font('source\\ui\\DungGeunMo.ttf', 40)
 kimu.skill_1_icon = load_image(f'source\\skill_icon\\asha\\asha_0904.png')

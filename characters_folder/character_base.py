@@ -6,7 +6,7 @@ class Character:
     skill_2_icon = None
     skill_3_icon = None
 
-    def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None):
+    def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None, get = False):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack
         self.anime = anime
         self.x = x
@@ -22,6 +22,7 @@ class Character:
         self.name = name
         # 현재 애니메이션 인덱스 저장용
         self.anim_idx = 0
+        self.get = get
 
 
     def Update(self, dt):

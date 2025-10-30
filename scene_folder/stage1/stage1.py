@@ -13,6 +13,7 @@ stage1 = Stage()
 ground = load_image('source\\background\\stage1_ground.png')
 background = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.png'),WIDTH/2,HEIGHT/2,960,800)
 black = load_image('source\\background\\black.png')
+unknown = load_image('source\\character\\unknown.png')
 choiceChar = None
 
 def Reset(self):
@@ -44,7 +45,8 @@ def UPDATE_overriding(self, dt):
                         if choiceChar == cnt:
                             choiceChar = None
                         else:
-                            choiceChar = cnt
+                            if(Characters[cnt].get == True):
+                                choiceChar = cnt
                     cnt += 1
                 for i in gamemanager.partylocate:
                     if (i[0]-50 <= mx <= i[0]+50 and i[1]-50 <= my <= i[1]+50) and i[0] != 100:
@@ -59,33 +61,35 @@ def UPDATE_overriding(self, dt):
                 if(1100 - 75 <= mx <= 1100 + 75 and 100 - 75 <= my <= 100 + 75):
                     if len(gamemanager.party) == 4:
                         Ready()
-
 stage1.Update = UPDATE_overriding.__get__(stage1, Stage)
 
-def Draw_overriding(self):
+def Draw_background_overriding(self):
     background.Draw()
     ground.clip_draw(0, 0, 1024, 252, WIDTH // 2, 300,1200,250)
     black.clip_draw(0, 0, 1200, 800, WIDTH // 2, 50,1200,250)
-    if not gamemanager.nowScene == "battle":
-        cnt = 1
-        for c in Characters[cnt:]:  # 캐릭터 선택창
-            if cnt < 8:
-                c.anime[0][0].clip_draw(0,0,100,100,(cnt-1)*100+100,170,100,100)
-            else:
-                c.anime[1][0].clip_draw(0,0,100,100,(cnt-8)*100+100,70,100,100)
-            cnt += 1
-        global choiceChar   # 선택된 캐릭터 테두리
-        if choiceChar != None:
-            Draw_choiceBox(choiceChar)
-        if len(gamemanager.party) < 4:
-            battleBox = load_image('source\\ui\\mainmenu_0003_mainmenuEN2-copy.png')
-            battleBox.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
+stage1.Draw_background = Draw_background_overriding.__get__(stage1, Stage)
+
+def Draw_choicechar_overriding(self):
+    cnt = 1
+    for c in Characters[cnt:]:# 캐릭터 선택창
+        if cnt < 8:
+            if(c.get == False): unknown.clip_draw(0,0,70,80,(cnt-1)*100+100,160,70,80)
+            else: c.anime[0][0].clip_draw(0,0,100,100,(cnt-1)*100+100,170,100,100)
         else:
-            battleBox = load_image('source\\ui\\mainmenu_0004_mainmenuEN2.png')
-            battleBox.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
+            if (c.get == False): unknown.clip_draw(0,0,70,80,(cnt-8)*100+100,60,70,80)
+            else: c.anime[1][0].clip_draw(0,0,100,100,(cnt-8)*100+100,70,100,100)
+        cnt += 1
 
-
-stage1.Draw = Draw_overriding.__get__(stage1, Stage)
+    global choiceChar   # 선택된 캐릭터 테두리
+    if choiceChar != None:
+        Draw_choiceBox(choiceChar)
+    if len(gamemanager.party) < 4:
+        battleBox = load_image('source\\ui\\mainmenu_0003_mainmenuEN2-copy.png')
+        battleBox.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
+    else:
+        battleBox = load_image('source\\ui\\mainmenu_0004_mainmenuEN2.png')
+        battleBox.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
+stage1.Draw_choicechar = Draw_choicechar_overriding.__get__(stage1, Stage)
 
 def Draw_choiceBox(n):
     choice_box = load_image('source\\ui\\choice_box.png')
