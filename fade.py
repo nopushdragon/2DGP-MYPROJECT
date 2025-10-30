@@ -3,7 +3,6 @@ from stages import Stages
 import gamemanager
 
 black_fade_image = load_image('source\\background\\fade_black.png')
-#black_fade_image = load_image("source\\skill_icon\\asha\\hero_illust_09_Asha.png")
 
 STATE_IDLE = 0
 STATE_FADING_OUT = 1

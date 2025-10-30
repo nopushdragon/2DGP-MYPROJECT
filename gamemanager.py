@@ -7,7 +7,7 @@ from pico2d import *
 open_canvas(WIDTH, HEIGHT)
 from paint import *
 from characters import *
-from stage_folder.start import *
+from scene_folder.start import *
 import battle
 import fade
 

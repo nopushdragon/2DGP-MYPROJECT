@@ -1,12 +1,12 @@
 from pico2d import *
 from characters_folder.character_base import *
 from skill_folder.gunman_skill.gunman_skill_1 import create_skill_1
-
+from sourcemanager import *
 
 gunman = Character([
-    [load_image(f'source\\character\\hope\\hope01_0{i}.png') for i in range(1, 3)],
-    [load_image(f'source\\character\\hope\\hope01_0{i}.png') for i in range(3, 5)],
-    [load_image(f'source\\character\\hope\\hope01_0{i}.png') for i in range(5, 8)]
+    gunman_idle_anime,
+    gunman_move_anime,
+    gunman_attack_anime
 ], 100, 400, [],name = "건 맨")
 
 # ui에 필요한 리소스들

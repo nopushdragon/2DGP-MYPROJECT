@@ -1,7 +1,7 @@
 # 여기 stage에서 ready 끝나면 gamemanager에서 battle.update로 바꿀거임
 # 어떤 stage가 와도 같은 방식으로 작동하도록 구현해야함
 from pico2d import *
-from stage_folder import speedbar
+from scene_folder import speedbar
 import gamemanager
 from gamemanager import HEIGHT
 import random
@@ -72,21 +72,29 @@ def Update(dt):
             if nowChar.flip:  # 적군 턴
                 if nowChar.skill and nowChar.skill[0].type == "enemy_solo":
                     target = [random.choice(gamemanager.party)]
+                    while not target[0].status["nowhp"] > 0:
+                        target = [random.choice(gamemanager.party)]
                 elif nowChar.skill and nowChar.skill[0].type == "enemy_all":
-                    target = gamemanager.party[:]
+                    target = [p for p in gamemanager.party if p.status["nowhp"] > 0]
                 elif nowChar.skill and nowChar.skill[0].type == "party_solo":
                     target = [random.choice(gamemanager.enemy)]
+                    while not target[0].status["nowhp"] > 0:
+                        target = [random.choice(gamemanager.enemy)]
                 elif nowChar.skill and nowChar.skill[0].type == "party_all":
-                    target = gamemanager.enemy[:]
+                    target = [e for e in gamemanager.enemy if e.status["nowhp"] > 0]
             else:  # 아군 턴
                 if nowChar.skill and nowChar.skill[0].type == "enemy_solo":
                     target = [random.choice(gamemanager.enemy)]
+                    while not target[0].status["nowhp"] > 0:
+                        target = [random.choice(gamemanager.enemy)]
                 elif nowChar.skill and nowChar.skill[0].type == "enemy_all":
-                    target = gamemanager.enemy[:]
+                    target = [e for e in gamemanager.enemy if e.status["nowhp"] > 0]
                 elif nowChar.skill and nowChar.skill[0].type == "party_solo":
                     target = [random.choice(gamemanager.party)]
+                    while not target[0].status["nowhp"] > 0:
+                        target = [random.choice(gamemanager.party)]
                 elif nowChar.skill and nowChar.skill[0].type == "party_all":
-                    target = gamemanager.party[:]
+                    target = [p for p in gamemanager.party if p.status["nowhp"] > 0]
 
         if nowChar.skill and not nowChar.attackMotionEnd:
             for p in nowChar.skill[::-1]:

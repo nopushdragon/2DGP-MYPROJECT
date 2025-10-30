@@ -1,5 +1,5 @@
 import gamemanager
-from stage_folder import start, speedbar
+from scene_folder import start, speedbar
 import battle
 from pico2d import *
 import fade
@@ -15,9 +15,11 @@ def DrawAll(dt):
             if not battle.turnSkillUsed:
                 gamemanager.nowstage.Draw() #스테이지 배경 그리기
                 for c in gamemanager.party: #아군 그리기
-                    c.Draw()
+                    if c.status["nowhp"] > 0:
+                        c.Draw()
                 for e in gamemanager.enemy: #적 그리기
-                    e.Draw()
+                    if e.status["nowhp"] > 0:
+                        e.Draw()
                 speedbar.Draw()
                 HpUi_draw()
                 if not battle.nowTurn == -1:
