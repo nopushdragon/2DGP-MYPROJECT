@@ -26,47 +26,80 @@ def Update(dt):
             nowChar = gamemanager.enemy[nowTurn - 4]
 
         if not turnSkillUsed:
-            events = get_events()
-            for event in events:
-                if event.type == SDL_MOUSEBUTTONDOWN:
-                    mx, my = event.x, HEIGHT - event.y
-                    print(mx, my)
-                    if (800 <= mx <= 900 and 50 <= my <= 150):
-                        if skillInform == "skill_1":
-                            nowChar.state = "skill_1"
-                            nowChar.Skill_1()
-                            nowChar.frame = 0
-                            nowChar.frameTimer = 0.0
-                            nowChar.attackMotionEnd = False
-                            nowChar.attackMotionEndTimer = 0.0
-                            turnSkillUsed = True
-                            skillInform = None
-                        else:
-                            skillInform = "skill_1"
-                    elif (925 <= mx <= 1025 and 50 <= my <= 150):
-                        if skillInform == "skill_2":
-                            nowChar.state = "skill_2"
-                            nowChar.Skill_2()
-                            nowChar.frame = 0
-                            nowChar.frameTimer = 0.0
-                            nowChar.attackMotionEnd = False
-                            nowChar.attackMotionEndTimer = 0.0
-                            turnSkillUsed = True
-                            skillInform = None
-                        else:
-                            skillInform = "skill_2"
-                    elif (1050 <= mx <= 1150 and 50 <= my <= 150):
-                        if skillInform == "skill_3":
-                            nowChar.state = "skill_3"
-                            nowChar.Skill_3()
-                            nowChar.frame = 0
-                            nowChar.frameTimer = 0.0
-                            nowChar.attackMotionEnd = False
-                            nowChar.attackMotionEndTimer = 0.0
-                            turnSkillUsed = True
-                            skillInform = None
-                        else:
-                            skillInform = "skill_3"
+            if nowTurn < 4:  # 아군 턴
+                events = get_events()
+                for event in events:
+                    if event.type == SDL_MOUSEBUTTONDOWN:
+                        mx, my = event.x, HEIGHT - event.y
+                        print(mx, my)
+                        if (800 <= mx <= 900 and 50 <= my <= 150):
+                            if skillInform == "skill_1":
+                                nowChar.state = "skill_1"
+                                nowChar.Skill_1()
+                                nowChar.frame = 0
+                                nowChar.frameTimer = 0.0
+                                nowChar.attackMotionEnd = False
+                                nowChar.attackMotionEndTimer = 0.0
+                                turnSkillUsed = True
+                                skillInform = None
+                            else:
+                                skillInform = "skill_1"
+                        elif (925 <= mx <= 1025 and 50 <= my <= 150):
+                            if skillInform == "skill_2":
+                                nowChar.state = "skill_2"
+                                nowChar.Skill_2()
+                                nowChar.frame = 0
+                                nowChar.frameTimer = 0.0
+                                nowChar.attackMotionEnd = False
+                                nowChar.attackMotionEndTimer = 0.0
+                                turnSkillUsed = True
+                                skillInform = None
+                            else:
+                                skillInform = "skill_2"
+                        elif (1050 <= mx <= 1150 and 50 <= my <= 150):
+                            if skillInform == "skill_3":
+                                nowChar.state = "skill_3"
+                                nowChar.Skill_3()
+                                nowChar.frame = 0
+                                nowChar.frameTimer = 0.0
+                                nowChar.attackMotionEnd = False
+                                nowChar.attackMotionEndTimer = 0.0
+                                turnSkillUsed = True
+                                skillInform = None
+                            else:
+                                skillInform = "skill_3"
+            else:
+                #rd_skill = random.randint(1,4)
+                rd_skill = 1
+                if rd_skill == 1:
+                    nowChar.state = "skill_1"
+                    nowChar.Skill_1()
+                elif rd_skill == 2:
+                    nowChar.state = "skill_2"
+                    nowChar.Skill_2()
+                elif rd_skill == 3:
+                    nowChar.state = "skill_3"
+                    nowChar.Skill_3()
+
+                while nowChar.skill[0].nowCooltime > 0:
+                    nowChar.skill.clear()
+                    rd_skill = random.randint(1,3)
+                    if rd_skill == 1:
+                        nowChar.state = "skill_1"
+                        nowChar.Skill_1()
+                    elif rd_skill == 2:
+                        nowChar.state = "skill_2"
+                        nowChar.Skill_2()
+                    elif rd_skill == 3:
+                        nowChar.state = "skill_3"
+                        nowChar.Skill_3()
+
+                nowChar.frame = 0
+                nowChar.frameTimer = 0.0
+                nowChar.attackMotionEnd = False
+                nowChar.attackMotionEndTimer = 0.0
+                turnSkillUsed = True
+                skillInform = None
 
         if len(target) == 0:
             if nowChar.flip:  # 적군 턴

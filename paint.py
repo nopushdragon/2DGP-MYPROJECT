@@ -79,7 +79,7 @@ def HpUi_draw():
                 hp_font.draw(510, 180 - (50 * speedbar.spdNums.index(n)),
                     f'{gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"]}/{gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"]}', (220, 220, 220))
                 hp_team.clip_draw(0,0,114,14,
-                                  450-((114 - (int)(114 * (gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"] / gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"]))) / 2), 180 - (50 * speedbar.spdNums.index(n))
+                                  450-((114 - (int)(114 * (gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"] / gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"]))) / 2), 180 - (50 * speedbar.spdNums.index(n)),
                                   (int)(114 * (gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"] / gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"])),14)
             else:
                 n.image.clip_draw(0, 0, 100, 100, 580, 180 - (50 * (speedbar.spdNums.index(n) - 4)), 20, 20)
