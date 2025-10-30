@@ -4,6 +4,10 @@ import battle
 from pico2d import *
 import fade
 
+hp_font = load_font('source\\ui\\DungGeunMo.ttf',15)
+hp_base = load_image('source\\ui\\hp_base.png')
+hp_team = load_image('source\\ui\\hp_team.png')
+hp_enemy = load_image('source\\ui\\hp_enemy.png')
 
 def DrawAll(dt):
     gamemanager.clear_canvas()
@@ -20,8 +24,9 @@ def DrawAll(dt):
                 for e in gamemanager.enemy: #적 그리기
                     if e.status["nowhp"] > 0:
                         e.Draw()
-                speedbar.Draw()
-                HpUi_draw()
+                if gamemanager.nowScene == "battle": speedbar.Draw() #speedbar 그리기
+                speedbar.Draw_locateguide()
+                HpUi_draw() #hp ui 그리기
                 if not battle.nowTurn == -1:
                     if battle.nowTurn < 4:
                         gamemanager.party[battle.nowTurn].Draw_turn()
@@ -66,15 +71,21 @@ def skill_inform_draw():
     elif battle.skillInform == "skill_3":
         informBox.clip_draw(0, 0, 88, 88, 1100, 100, 110, 110)
 
-hp_font = load_font('source\\ui\\DungGeunMo.ttf',25)
 def HpUi_draw():
     if gamemanager.nowScene == "battle":
         for n in speedbar.spdNums:
             if speedbar.spdNums.index(n) < 4:
                 n.image.clip_draw(0, 0, 100, 100, 380, 180 - (50 * speedbar.spdNums.index(n)), 20, 20)
-                hp_font.draw(400, 180 - (50 * speedbar.spdNums.index(n)),
+                hp_font.draw(510, 180 - (50 * speedbar.spdNums.index(n)),
                     f'{gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"]}/{gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"]}', (220, 220, 220))
+                hp_team.clip_draw(0,0,114,14,
+                                  450-((114 - (int)(114 * (gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"] / gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"]))) / 2), 180 - (50 * speedbar.spdNums.index(n))
+                                  (int)(114 * (gamemanager.party[speedbar.spdNums.index(n)].status["nowhp"] / gamemanager.party[speedbar.spdNums.index(n)].status["maxhp"])),14)
             else:
                 n.image.clip_draw(0, 0, 100, 100, 580, 180 - (50 * (speedbar.spdNums.index(n) - 4)), 20, 20)
-                hp_font.draw(600, 180 - (50 * (speedbar.spdNums.index(n) - 4)),
+                hp_font.draw(710, 180 - (50 * (speedbar.spdNums.index(n) - 4)),
                     f'{gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["nowhp"]}/{gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["maxhp"]}', (220, 220, 220))
+                hp_enemy.clip_draw(0, 0, 114, 14,
+                                   650-((114 - (int)(114 * (gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["nowhp"] / gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["maxhp"]))) / 2), 180 - (50 * (speedbar.spdNums.index(n)-4)),
+                                   (int)(114 * (gamemanager.enemy[speedbar.spdNums.index(n)-4].status["nowhp"] / gamemanager.enemy[speedbar.spdNums.index(n)-4].status["maxhp"])),14)
+

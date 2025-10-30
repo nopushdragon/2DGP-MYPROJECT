@@ -1,5 +1,5 @@
 from pico2d import *
-from gamemanager import WIDTH
+import gamemanager
 import battle
 
 class SpeedNum:
@@ -29,26 +29,40 @@ spdNums = [p1,p2,p3,p4,e1,e2,e3,e4]
 update_timer = 0.0
 def Update(dt):
     global update_timer
+
     update_timer += dt
     if update_timer >= 0.001:
         minX = 1000
         speedTurn = -1
         for n in spdNums:
-            if n.speed != 0:
-                n.Update()
-                if n.x < minX:
-                    minX = n.x
-                    speedTurn = spdNums.index(n)
+            if spdNums.index(n) < 4:
+                if gamemanager.party[spdNums.index(n)].status["nowhp"] > 0:
+                    n.Update()
+                    if n.x < minX:
+                        minX = n.x
+                        speedTurn = spdNums.index(n)
+            else:
+                if gamemanager.enemy[spdNums.index(n)-4].status["nowhp"] > 0:
+                    n.Update()
+                    if n.x < minX:
+                        minX = n.x
+                        speedTurn = spdNums.index(n)
         update_timer = 0.0
         if minX <= 210:
             battle.nowTurn = speedTurn
         # 여기에 속도 도착했을때 처리하고 battle에 아마 캐릭터 턴 넘겨줘야 할듯
 
 def Draw():
-    speedBar.clip_draw(0, 0, 1200, 800, WIDTH // 2, 700, 800, 20)
+    speedBar.clip_draw(0, 0, 1200, 800, gamemanager.WIDTH // 2, 700, 800, 20)
     for n in spdNums:
-        if not n.speed == 0:
-            n.Draw()
+        if spdNums.index(n) < 4:
+            if gamemanager.party[spdNums.index(n)].status["nowhp"] > 0:
+                n.Draw()
+        else:
+            if gamemanager.enemy[spdNums.index(n)-4].status["nowhp"] > 0:
+                n.Draw()
+
+def Draw_locateguide():
     cnt = 0
     for _ in spdNums:
         if cnt < 4:
