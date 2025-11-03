@@ -37,6 +37,8 @@ def update():
                     Stages[int(next_scene[-1]) - 1].Reset()
                     gamemanager.nowScene = f"{next_scene}_ready"
                     gamemanager.nowstage = Stages[int(next_scene[-1]) - 1]
+                else:
+                    gamemanager.nowScene = next_scene
 
                 fade_state = STATE_FADING_IN
         elif fade_state == STATE_FADING_IN:

@@ -7,7 +7,9 @@ from pico2d import *
 open_canvas(WIDTH, HEIGHT)
 from paint import *
 from characters import *
-from scene_folder.start import *
+import scene_folder.title
+import scene_folder.home
+import scene_folder.shop
 import battle
 import fade
 
@@ -38,8 +40,12 @@ def main():
 
         dt = TARGET_DT
 
-        if nowScene == "start":
-            start.Update()
+        if nowScene == "title":
+            scene_folder.title.Update()
+        elif nowScene == "home":
+            scene_folder.home.Update()
+        elif nowScene == "shop":
+            scene_folder.shop.Update()
         else:
             GameUpdate(dt)
         fade.update()
