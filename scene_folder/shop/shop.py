@@ -2,11 +2,11 @@ from pico2d import *
 import gamemanager
 from scene_folder.background_base import BackGround
 
-def reset():
+def Reset():
     global shop_bg
     shop_bg = BackGround('source\\background\\shop_background.png')
 
-def update():
+def Update():
     pass
 
 def handle_events():
@@ -17,5 +17,5 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             gamemanager.quit()
 
-def draw():
+def Draw():
     pass

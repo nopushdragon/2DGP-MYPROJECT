@@ -7,9 +7,9 @@ from pico2d import *
 open_canvas(WIDTH, HEIGHT)
 from paint import *
 from characters import *
-import scene_folder.title
-import scene_folder.home
-import scene_folder.shop
+from scene_folder.title import *
+from scene_folder.home import *
+from scene_folder.shop import *
 import battle
 import fade
 
@@ -37,15 +37,14 @@ def GameUpdate(dt):
 def main():
     while True:
         frame_start = get_time()
-
         dt = TARGET_DT
 
         if nowScene == "title":
-            scene_folder.title.Update()
+            title.Update()
         elif nowScene == "home":
-            scene_folder.home.Update()
+            home.Update()
         elif nowScene == "shop":
-            scene_folder.shop.Update()
+            shop.Update()
         else:
             GameUpdate(dt)
         fade.update()
