@@ -21,6 +21,8 @@ def Reset(self):
     choiceChar = None
     import gamemanager
     gamemanager.party = gamemanager.party[:1]
+    gamemanager.party[0].x = gamemanager.partylocate[0][0]
+    gamemanager.party[0].y = gamemanager.partylocate[0][1]
     gamemanager.enemy.clear()
     cnt = 0
     for e in enemys:
@@ -33,6 +35,7 @@ stage1.Reset = Reset.__get__(stage1, Stage)
 
 def UPDATE_overriding(self, dt):
     background.Move(-10 * dt)
+
     if not gamemanager.nowScene == "battle":
         events = get_events()
         for event in events:

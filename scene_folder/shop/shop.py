@@ -6,7 +6,7 @@ def Reset():
     global shop_bg
     shop_bg = BackGround('source\\background\\shop_background.png')
 
-def Update():
+def Update(dt):
     pass
 
 def handle_events():

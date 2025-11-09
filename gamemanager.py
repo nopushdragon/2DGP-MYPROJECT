@@ -21,8 +21,6 @@ nowstage = []
 partylocate = [(100,400),(200,400),(300,400),(400,400)]
 enemylocate = [(800,400),(900,400),(1000,400),(1100,400)]
 
-TARGET_FPS = 60.0
-TARGET_DT = 1.0 / TARGET_FPS
 
 
 def GameUpdate(dt):
@@ -34,20 +32,23 @@ def GameUpdate(dt):
     for e in enemy:
         e.Update(dt)
 
+TARGET_FPS = 60.0
+TARGET_DT = 1.0 / TARGET_FPS
+
 def main():
     while True:
         frame_start = get_time()
         dt = TARGET_DT
 
         if nowScene == "title":
-            title.Update()
+            title.Update(dt)
         elif nowScene == "home":
-            home.Update()
+            home.Update(dt)
         elif nowScene == "shop":
-            shop.Update()
+            shop.Update(dt)
         else:
             GameUpdate(dt)
-        fade.update()
+        fade.update(dt)
 
         DrawAll(dt)
 

@@ -24,7 +24,7 @@ def fade_out(scene):
     fade_state = STATE_FADING_OUT
 
 
-def update():
+def update(dt):
     global fade_alpha, fade_state
 
     if not fade_state == STATE_IDLE:
@@ -37,6 +37,9 @@ def update():
                     Stages[int(next_scene[-1]) - 1].Reset()
                     gamemanager.nowScene = f"{next_scene}_ready"
                     gamemanager.nowstage = Stages[int(next_scene[-1]) - 1]
+                elif next_scene == "home":
+                    gamemanager.home.Reset()
+                    gamemanager.nowScene = next_scene
                 else:
                     gamemanager.nowScene = next_scene
 

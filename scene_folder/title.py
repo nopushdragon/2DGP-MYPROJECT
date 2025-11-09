@@ -6,7 +6,10 @@ import fade
 titleBackground = load_image('source\\background\\start.png')
 startButton = load_image('source\\background\\start_button.png')
 
-def Update():
+def Update(dt):
+    handle_events()
+
+def handle_events():
     events = get_events()
     for event in events:
         if event.type == SDL_MOUSEBUTTONDOWN:
