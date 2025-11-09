@@ -44,7 +44,6 @@ def update(dt):
                 else:
                     gamemanager.nowScene = next_scene
                 for c in characters.Characters:
-                    print(f"{c.name} : {c.status['maxhp']}")
                     c.flip = False
                     c.reset()
                 fade_state = STATE_FADING_IN

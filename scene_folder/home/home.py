@@ -19,6 +19,9 @@ upgrade_button = load_image('source\\ui\\upgrade_button.png')
 chars = []
 active_timer = []
 def Reset():
+    global chars, active_timer
+    chars.clear()
+    active_timer.clear()
     for c in Characters:
         if c.get == True:
             c.x = random.randint(100, WIDTH - 100)
@@ -34,6 +37,7 @@ def Update(dt):
     char_update(dt)
 
 def char_update(dt):
+    global chars, active_timer
     for c in chars:
         idx = chars.index(c)
         active_timer[idx] += dt
