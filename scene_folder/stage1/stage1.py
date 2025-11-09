@@ -11,7 +11,8 @@ from .stage1_enemys import enemys
 stage1 = Stage()
 
 ground = load_image('source\\background\\stage1_ground.png')
-background = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.png'),WIDTH/2,HEIGHT/2,960,800)
+#background = BackGround(load_image('source\\background\\bg_tile_chapter_01_01.png'),WIDTH/2,HEIGHT/2,960,800)
+background = BackGround(load_image('source\\background\\bg_home_morning.png'),WIDTH/2,HEIGHT/2,1024,800)
 black = load_image('source\\background\\black.png')
 unknown = load_image('source\\character\\unknown.png')
 choiceChar = None

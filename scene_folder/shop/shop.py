@@ -1,6 +1,7 @@
 from pico2d import *
 import gamemanager
 from scene_folder.background_base import BackGround
+import ui
 
 def Reset():
     global shop_bg
@@ -18,4 +19,4 @@ def handle_events():
             gamemanager.quit()
 
 def Draw():
-    pass
+    ui.draw()
