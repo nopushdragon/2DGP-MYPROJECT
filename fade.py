@@ -1,6 +1,7 @@
 from pico2d import *
 from stages import Stages
 import gamemanager
+import characters
 
 black_fade_image = load_image('source\\background\\fade_black.png')
 
@@ -42,7 +43,10 @@ def update(dt):
                     gamemanager.nowScene = next_scene
                 else:
                     gamemanager.nowScene = next_scene
-
+                for c in characters.Characters:
+                    print(f"{c.name} : {c.status['maxhp']}")
+                    c.flip = False
+                    c.reset()
                 fade_state = STATE_FADING_IN
         elif fade_state == STATE_FADING_IN:
             fade_alpha -= FADE_SPEED
@@ -54,7 +58,6 @@ def update(dt):
 def draw():
     if fade_state != STATE_IDLE:
         black_fade_image.opacify(fade_alpha)
-        print(fade_alpha)
         # clip_draw 사용하여 전체 화면에 그립니다.
         black_fade_image.clip_draw(0, 0, 120, 80, gamemanager.WIDTH // 2, gamemanager.HEIGHT // 2,1200,800)
 

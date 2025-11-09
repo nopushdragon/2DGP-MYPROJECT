@@ -29,6 +29,7 @@ def Reset(self):
         gamemanager.enemy.append(e)
         e.x = gamemanager.enemylocate[cnt][0]
         e.y = gamemanager.enemylocate[cnt][1]
+        e.reset()
         cnt += 1
 # Bind Reset as an instance method so Stage instances have Reset()
 stage1.Reset = Reset.__get__(stage1, Stage)

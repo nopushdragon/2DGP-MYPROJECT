@@ -17,7 +17,7 @@ gunman.skill_1_icon = load_image(f'source\\skill_icon\\gunman\\hope_1103.png')
 gunman.skill_2_icon = load_image(f'source\\skill_icon\\gunman\\hope_1101.png')
 gunman.skill_3_icon = load_image(f'source\\skill_icon\\gunman\\hope_1102.png')
 
-gunman.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 500, "condition":[]}  # nowhp, maxhp, attack, speed
+gunman.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 250, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":250}  # nowhp, maxhp, attack, speed
 
 def Skill_1_override(self):
     skill_1 = create_skill_1(self.x, self.y, self.flip)

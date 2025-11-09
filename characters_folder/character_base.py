@@ -88,3 +88,17 @@ class Character:
 
     def Draw_turn(self):
         pass
+
+    def reset(self):
+        self.anim_idx = 0
+        self.frame = 0
+        self.frameTimer = 0.0
+        self.state = "idle"
+        self.skill = []
+        self.attackMotionEnd = False
+        self.attackMotionEndTimer = 0.0
+        self.status["nowhp"] = self.status["maxhp"]
+        self.status["atk"] = self.status["origin_atk"]
+        self.status["def"] = self.status["origin_def"]
+        self.status["speed"] = self.status["origin_speed"]
+        self.status["condition"] = []

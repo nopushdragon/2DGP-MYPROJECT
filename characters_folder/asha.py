@@ -16,7 +16,7 @@ asha.skill_1_icon = load_image(f'source\\skill_icon\\asha\\asha_0904.png')
 asha.skill_2_icon = load_image(f'source\\skill_icon\\asha\\asha_0903.png')
 asha.skill_3_icon = load_image(f'source\\skill_icon\\asha\\asha_0901.png')
 
-asha.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 300, "condition":[]}  # nowhp, maxhp, attack, speed
+asha.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 300, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":300}  # nowhp, maxhp, attack, speed
 
 
 def Skill_1_override(self):

@@ -7,7 +7,7 @@ luna = Character([
     [load_image(f'source\\character\\luna\\luna01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],name = "루나")
 
-luna.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[]}  # nowhp, maxhp, attack, speed
+luna.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
 
 
 def Skill_1_override(self):
