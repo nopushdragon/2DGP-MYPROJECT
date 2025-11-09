@@ -10,6 +10,7 @@ from characters import *
 from scene_folder.title import *
 from scene_folder.home import *
 from scene_folder.shop import *
+from scene_folder.friend import *
 import battle
 import fade
 
@@ -46,6 +47,8 @@ def main():
             home.Update(dt)
         elif nowScene == "shop":
             shop.Update(dt)
+        elif nowScene == "friend":
+            friend.Update(dt)
         else:
             GameUpdate(dt)
         fade.update(dt)

@@ -15,6 +15,9 @@ ground = load_image('source\\background\\stage1_ground.png')
 background = BackGround(load_image('source\\background\\bg_home_morning.png'),WIDTH/2,HEIGHT/2,1024,800)
 black = load_image('source\\background\\black.png')
 unknown = load_image('source\\character\\unknown.png')
+choice_box = load_image('source\\ui\\choice_box.png')
+battleBox_off = load_image('source\\ui\\mainmenu_0003_mainmenuEN2-copy.png')
+battleBox_on = load_image('source\\ui\\mainmenu_0004_mainmenuEN2.png')
 choiceChar = None
 
 def Reset(self):
@@ -89,15 +92,12 @@ def Draw_choicechar_overriding(self):
     if choiceChar != None:
         Draw_choiceBox(choiceChar)
     if len(gamemanager.party) < 4:
-        battleBox = load_image('source\\ui\\mainmenu_0003_mainmenuEN2-copy.png')
-        battleBox.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
+        battleBox_off.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
     else:
-        battleBox = load_image('source\\ui\\mainmenu_0004_mainmenuEN2.png')
-        battleBox.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
+        battleBox_on.clip_draw(0, 0, 82, 82, 1100, 100, 150, 150)
 stage1.Draw_choicechar = Draw_choicechar_overriding.__get__(stage1, Stage)
 
 def Draw_choiceBox(n):
-    choice_box = load_image('source\\ui\\choice_box.png')
     if n < 8:
         choice_box.clip_draw(0, 0, 88, 88, (n-1)*100+100, 160, 100, 100)
     else:

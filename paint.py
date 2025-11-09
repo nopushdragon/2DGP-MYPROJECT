@@ -5,6 +5,8 @@ from pico2d import *
 import fade
 from scene_folder.home import home
 from scene_folder.shop import shop
+from scene_folder.friend import friend
+
 
 hp_font = load_font('source\\ui\\DungGeunMo.ttf',15)
 hp_base = load_image('source\\ui\\hp_base.png')
@@ -20,6 +22,8 @@ def DrawAll(dt):
         home.Draw()
     elif gamemanager.nowScene == "shop":
         shop.Draw()
+    elif gamemanager.nowScene == "friend":
+        friend.Draw()
     else:
         if gamemanager.nowScene in "stage1_ready" or "battle":    #나중에 다른 stage도 or로 추가
             if not battle.turnSkillUsed:
