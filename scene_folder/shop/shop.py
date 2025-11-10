@@ -2,6 +2,7 @@ from pico2d import *
 import gamemanager
 from scene_folder.background_base import BackGround
 import ui
+import fade
 
 def Reset():
     global shop_bg
@@ -13,10 +14,8 @@ def Update(dt):
 def handle_events():
     events = get_events()
     for event in events:
-        if event.type == SDL_QUIT:
-            gamemanager.quit()
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
-            gamemanager.quit()
+        if event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            fade.fade_out("home")
 
 def Draw():
     ui.draw()

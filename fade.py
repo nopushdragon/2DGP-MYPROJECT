@@ -2,6 +2,7 @@ from pico2d import *
 from stages import Stages
 import gamemanager
 import characters
+import battle
 
 black_fade_image = load_image('source\\background\\fade_black.png')
 
@@ -38,6 +39,7 @@ def update(dt):
                     Stages[int(next_scene[-1]) - 1].Reset()
                     gamemanager.nowScene = f"{next_scene}_ready"
                     gamemanager.nowstage = Stages[int(next_scene[-1]) - 1]
+                    battle.Reset()
                 elif next_scene == "home":
                     gamemanager.home.Reset()
                     gamemanager.nowScene = next_scene

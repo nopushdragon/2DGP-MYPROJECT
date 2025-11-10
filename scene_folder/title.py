@@ -23,6 +23,9 @@ def handle_events():
             mx, my = event.x, HEIGHT - event.y
             if( WIDTH / 2 - 200 <= mx <= WIDTH//2 + 200 and HEIGHT / 2 - 325 <= my <= HEIGHT//2 - 275):
                 fade.fade_out("home")
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            close_canvas()
+            quit()
 
 def Draw():
     titleBackground.clip_draw(0, 0, 1024, 1024, WIDTH / 2, HEIGHT / 2,1200,1000)

@@ -5,6 +5,7 @@ from scene_folder import speedbar
 import gamemanager
 from gamemanager import HEIGHT
 import random
+import fade
 
 nowTurn = -1  # -1이면 스피드바 진행, 0~3이면 아군 턴, 4~7이면 적군 턴
 turnSkillUsed = False # 턴이 시작되고 스킬을 사용중인 걸 판단
@@ -12,8 +13,19 @@ skillInform = None # 스킬 마우스로 1번 클릭하면 스킬 설명, 2번 �
 target = [] # 스킬 대상인데 사실상 단일 스킬에만 쓰일 듯.
 damageAnimation = False # 데미지
 
+def Reset():
+    global nowTurn, turnSkillUsed, target, skillInform, damageAnimation
+    nowTurn = -1
+    turnSkillUsed = False
+    target.clear()
+    skillInform = None
+    damageAnimation = False
+    speedbar.Reset()
+
 def Update(dt):
     global nowTurn, turnSkillUsed,target, skillInform, skillBuffer
+    events = get_events()
+    quit_events()
 
     if nowTurn == -1:
         speedbar.Update(dt)
@@ -27,7 +39,6 @@ def Update(dt):
 
         if not turnSkillUsed:
             if nowTurn < 4:  # 아군 턴
-                events = get_events()
                 for event in events:
                     if event.type == SDL_MOUSEBUTTONDOWN:
                         mx, my = event.x, HEIGHT - event.y
@@ -151,3 +162,8 @@ def Update(dt):
             speedbar.spdNums[nowTurn].x = 1000
             nowTurn = -1
             target.clear()
+
+def quit_events():
+    for event in get_events():
+        if event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            fade.fade_out("home")

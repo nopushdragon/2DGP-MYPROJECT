@@ -5,6 +5,7 @@ from pico2d import *
 from scene_folder.background_base import BackGround
 from scene_folder.stage_base import Stage
 from characters import Characters
+import fade
 
 from .stage1_enemys import enemys
 
@@ -35,6 +36,8 @@ def Reset(self):
         e.y = gamemanager.enemylocate[cnt][1]
         e.reset()
         cnt += 1
+
+
 # Bind Reset as an instance method so Stage instances have Reset()
 stage1.Reset = Reset.__get__(stage1, Stage)
 
@@ -69,6 +72,8 @@ def UPDATE_overriding(self, dt):
                 if(1100 - 75 <= mx <= 1100 + 75 and 100 - 75 <= my <= 100 + 75):
                     if len(gamemanager.party) == 4:
                         Ready()
+            elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+                fade.fade_out("home")
 stage1.Update = UPDATE_overriding.__get__(stage1, Stage)
 
 def Draw_background_overriding(self):

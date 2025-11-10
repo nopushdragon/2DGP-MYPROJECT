@@ -9,6 +9,9 @@ class SpeedNum:
         self.y = y
         self.speed = speed
 
+    def Reset(self):
+        self.x = 1000
+
     def Update(self):
         self.x -= self.speed/100
 
@@ -25,8 +28,14 @@ e2 = SpeedNum(load_image('source\\ui\\e2.png'))
 e3 = SpeedNum(load_image('source\\ui\\e3.png'))
 e4 = SpeedNum(load_image('source\\ui\\e4.png'))
 spdNums = [p1,p2,p3,p4,e1,e2,e3,e4]
-
 update_timer = 0.0
+
+def Reset():
+    global update_timer
+    update_timer = 0.0
+    for n in spdNums:
+        n.Reset()
+
 def Update(dt):
     global update_timer
 

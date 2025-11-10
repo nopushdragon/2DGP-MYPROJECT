@@ -40,7 +40,7 @@ def char_update(dt):
     for c in chars:
         idx = chars.index(c)
         active_timer[idx] += dt
-        if active_timer[idx] > 3:
+        if active_timer[idx] > 4:
             active_timer[idx] = 0.0
             c.frameTimer = 0.0
             c.frame = 0
