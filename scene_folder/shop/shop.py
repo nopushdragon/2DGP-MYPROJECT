@@ -41,12 +41,12 @@ def handle_events():
                 mx, my = event.x, gamemanager.HEIGHT - event.y
                 if 700 <= mx <= 900 and 40 <= my <= 90 and currency.ticket.quantity >= 1:
                     currency.ticket.quantity -= 1
-                    get_stack.append(random.randint(1,200))
+                    get_stack.append(random.randint(1,150))
                     get_event = True
                 elif 940 <= mx <= 1140 and 40 <= my <= 90 and currency.ticket.quantity >= 10:
                     currency.ticket.quantity -= 10
                     for _ in range(10):
-                        get_stack.append(random.randint(1, 200))
+                        get_stack.append(random.randint(1, 150))
                     get_event = True
         elif get_event == True:
             if event.type == SDL_MOUSEBUTTONDOWN:
