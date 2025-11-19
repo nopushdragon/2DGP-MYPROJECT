@@ -1,4 +1,5 @@
 class Character:
+    evo = 1 #진화 단계
     illust = None
     nameBox = None
     namefont = None
@@ -87,6 +88,9 @@ class Character:
         pass
 
     def Draw_turn(self):
+        pass
+
+    def evolution(self, new_anime, new_illust, new_nameBox, new_namefont, new_skill_icons, new_status):
         pass
 
     def reset(self):

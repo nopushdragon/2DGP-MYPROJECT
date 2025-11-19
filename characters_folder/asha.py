@@ -36,3 +36,12 @@ def Draw_turn_override(self):
     asha.skill_2_icon.clip_draw(0, 0, 32, 32, 975, 100, 100, 100)
     asha.skill_3_icon.clip_draw(0, 0, 32, 32, 1100, 100, 100, 100)
 asha.Draw_turn = Draw_turn_override.__get__(asha, Character)
+
+def evolution_override(self):
+    self.evo += 1
+    self.anime = [
+        [load_image(f'source\\character\\asha_evo\\asha_evo0{self.evo}_0{i}.png') for i in range(1, 3)],
+        [load_image(f'source\\character\\asha_evo\\asha_evo0{self.evo}_0{i}.png') for i in range(3, 5)],
+        [load_image(f'source\\character\\asha_evo\\asha_evo0{self.evo}_0{i}.png') for i in range(5, 8)]
+    ]
+asha.evolution = evolution_override.__get__(asha, Character)

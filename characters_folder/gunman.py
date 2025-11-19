@@ -1,12 +1,11 @@
 from pico2d import *
 from characters_folder.character_base import *
 from skill_folder.gunman_skill.gunman_skill_1 import create_skill_1
-from sourcemanager import *
 
 gunman = Character([
-    gunman_idle_anime,
-    gunman_move_anime,
-    gunman_attack_anime
+    [load_image(f'source\\character\\hope\\hope01_0{i}.png')for i in range(1, 3)],
+    [load_image(f'source\\character\\hope\\hope01_0{i}.png') for i in range(3, 5)],
+    [load_image(f'source\\character\\hope\\hope01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],name = "건 맨", get = True)
 
 # ui에 필요한 리소스들
@@ -44,3 +43,12 @@ def Draw_turn_override(self):
     gunman.skill_2_icon.clip_draw(0, 0, 32, 32, 975, 100, 100, 100)
     gunman.skill_3_icon.clip_draw(0, 0, 32, 32, 1100, 100, 100, 100)
 gunman.Draw_turn = Draw_turn_override.__get__(gunman, Character)
+
+def evolution_override (self):
+    self.evo += 1
+    self.anime = [
+        [load_image(f'source\\character\\hope_evo\\hope_evo0{self.evo}_0{i}.png')for i in range(1, 3)],
+        [load_image(f'source\\character\\hope_evo\\hope_evo0{self.evo}_0{i}.png') for i in range(3, 5)],
+        [load_image(f'source\\character\\hope_evo\\hope_evo0{self.evo}_0{i}.png') for i in range(5, 8)]
+    ]
+gunman.evolution = evolution_override.__get__(gunman, Character)

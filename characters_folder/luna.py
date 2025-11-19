@@ -7,10 +7,28 @@ luna = Character([
     [load_image(f'source\\character\\luna\\luna01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],name = "루나")
 
+luna.illust = load_image('source\\character\\luna\\hero_illust_10_Luna.png')
+
 luna.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
 
 
 def Skill_1_override(self):
     pass
-
 luna.Skill_1 = Skill_1_override.__get__(luna, Character)
+
+def Skill_2_override(self):
+    pass
+luna.Skill_2 = Skill_2_override.__get__(luna, Character)
+
+def Skill_3_override(self):
+    pass
+luna.Skill_3 = Skill_3_override.__get__(luna, Character)
+
+def evolution_override (self):
+    self.evo += 1
+    self.anime = [
+        [load_image(f'source\\character\\luna\\luna0{self.evo}_0{i}.png') for i in range(1, 3)],
+        [load_image(f'source\\character\\luna\\luna0{self.evo}_0{i}.png') for i in range(3, 5)],
+        [load_image(f'source\\character\\luna\\luna0{self.evo}_0{i}.png') for i in range(5, 8)]
+    ]
+luna.evolution = evolution_override.__get__(luna, Character)
