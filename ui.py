@@ -3,8 +3,6 @@ from currency import *
 from gamemanager import WIDTH, HEIGHT
 import gamemanager
 
-ticket = TICKET()
-upgrade_stone = UPGRADE_STONE()
 option = load_image('source\\ui\\option.png')
 font = load_font('source\\ui\\DungGeunMo.TTF', 20)
 

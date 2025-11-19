@@ -10,6 +10,8 @@ background = BackGround(load_image('source\\background\\bg_friend.png'),WIDTH/2,
 unknown = load_image('source\\character\\unknown.png')
 choice_box = load_image('source\\ui\\choice_box.png')
 card = load_image('source\\ui\\card.png')
+card_char_bg = load_image('source\\ui\\card_char_bg.png')
+card_char = load_image('source\\ui\\card_char.png')
 
 choiceChar = None
 
@@ -52,6 +54,8 @@ def handle_events():
 
 def char_draw():
     card.clip_draw(0,0,375,496,WIDTH - 250, HEIGHT/2, 500, 800)
+    card_char_bg.clip_draw(0,0,470,699,350, HEIGHT/2, 700, 800)
+    card_char.clip_draw(0,0,375,496,WIDTH - 250, HEIGHT/2, 500, 800)
     cnt = 0
     for c in Characters:  # 캐릭터 선택창
         if cnt < 3:

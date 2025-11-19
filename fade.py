@@ -43,6 +43,12 @@ def update(dt):
                 elif next_scene == "home":
                     gamemanager.home.Reset()
                     gamemanager.nowScene = next_scene
+                elif next_scene == "shop":
+                    gamemanager.shop.Reset()
+                    gamemanager.nowScene = next_scene
+                elif next_scene == "friend":
+                    gamemanager.friend.Reset()
+                    gamemanager.nowScene = next_scene
                 else:
                     gamemanager.nowScene = next_scene
                 for c in characters.Characters:
