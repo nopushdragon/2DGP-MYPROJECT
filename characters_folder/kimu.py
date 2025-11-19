@@ -47,8 +47,8 @@ kimu.Draw_turn = Draw_turn_override.__get__(kimu, Character)
 def evolution_override(self):
     self.evo += 1
     self.anime = [
-        [load_image(f'source\\character\\kimu_evo\\kimu_evo0{self.evo}_0{i}.png') for i in range(1, 3)],
-        [load_image(f'source\\character\\kimu_evo\\kimu_evo0{self.evo}_0{i}.png') for i in range(3, 5)],
-        [load_image(f'source\\character\\kimu_evo\\kimu_evo0{self.evo}_0{i}.png') for i in range(5, 8)]
+        [load_image(f'source\\character\\kimu\\kimu0{self.evo}_0{i}.png') for i in range(1, 3)],
+        [load_image(f'source\\character\\kimu\\kimu0{self.evo}_0{i}.png') for i in range(3, 5)],
+        [load_image(f'source\\character\\kimu\\kimu0{self.evo}_0{i}.png') for i in range(5, 8)]
     ]
 kimu.evolution = evolution_override.__get__(kimu, Character)
