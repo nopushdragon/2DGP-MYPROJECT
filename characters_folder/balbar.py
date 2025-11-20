@@ -24,10 +24,6 @@ def Skill_3_override(self):
     pass
 balbar.Skill_3 = Skill_3_override.__get__(balbar, Character)
 
-def Draw_turn_override(self):
-    pass
-balbar.Draw_turn = Draw_turn_override.__get__(balbar, Character)
-
 def evolution_override(self):
     self.evo += 1
     self.anime = [

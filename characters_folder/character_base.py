@@ -1,11 +1,16 @@
+from pico2d import *
+
 class Character:
     evo = 1 #진화 단계
     illust = None
-    nameBox = None
-    namefont = None
-    skill_1_icon = None
-    skill_2_icon = None
-    skill_3_icon = None
+    nameBox = load_image('source\\ui\\namebox.png')
+    namefont = load_font('source\\ui\\DungGeunMo.ttf', 40)
+    #skill_1_icon = None
+    #skill_2_icon = None
+    #skill_3_icon = None
+    skill_1_icon = load_image(f'source\\skill_icon\\gunman\\hope_1103.png')
+    skill_2_icon = load_image(f'source\\skill_icon\\gunman\\hope_1101.png')
+    skill_3_icon = load_image(f'source\\skill_icon\\gunman\\hope_1102.png')
 
     def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None, get = False):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack
@@ -88,7 +93,16 @@ class Character:
         pass
 
     def Draw_turn(self):
-        pass
+        self.illust.clip_draw(0, 500, self.illust.w, self.illust.h, 150, 150, 300, 300)
+        self.nameBox.clip_draw(125, 0, 125, 33, 150, 25, 300, 50)
+        self.namefont.draw(100, 24, self.name, (0, 0, 0))
+        self.namefont.draw(100, 26, self.name, (0, 0, 0))
+        self.namefont.draw(99, 25, self.name, (0, 0, 0))
+        self.namefont.draw(101, 25, self.name, (0, 0, 0))
+        self.namefont.draw(100, 25, self.name, (230, 230, 230))
+        self.skill_1_icon.clip_draw(0, 0, self.skill_1_icon.w, self.skill_1_icon.h, 850, 100, 100, 100)
+        self.skill_2_icon.clip_draw(0, 0, self.skill_1_icon.w, self.skill_1_icon.h, 975, 100, 100, 100)
+        self.skill_3_icon.clip_draw(0, 0, self.skill_1_icon.w, self.skill_1_icon.h, 1100, 100, 100, 100)
 
     def evolution(self, new_anime, new_illust, new_nameBox, new_namefont, new_skill_icons, new_status):
         pass
