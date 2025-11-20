@@ -8,9 +8,10 @@ open_canvas(WIDTH, HEIGHT)
 from paint import *
 from characters import *
 from scene_folder.title import *
-from scene_folder.home import *
-from scene_folder.shop import *
-from scene_folder.friend import *
+from scene_folder.home import home
+from scene_folder.shop import shop
+from scene_folder.friend import friend
+from scene_folder.upgrade import upgrade
 import battle
 import fade
 
@@ -49,6 +50,8 @@ def main():
             shop.Update(dt)
         elif nowScene == "friend":
             friend.Update(dt)
+        elif nowScene == "upgrade":
+            upgrade.Update(dt)
         else:
             GameUpdate(dt)
         fade.update(dt)
