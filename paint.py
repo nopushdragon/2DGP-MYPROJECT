@@ -28,26 +28,31 @@ def DrawAll(dt):
         upgrade.Draw()
     else:
         if gamemanager.nowScene in "stage1_ready" or "battle":    #나중에 다른 stage도 or로 추가
-            if not battle.turnSkillUsed:
-                gamemanager.nowstage.Draw_background() #스테이지 배경 그리기
-                if not gamemanager.nowScene == "battle": gamemanager.nowstage.Draw_choicechar()
-                for c in gamemanager.party: #아군 그리기
-                    if c.status["nowhp"] > 0:
-                        c.Draw()
-                for e in gamemanager.enemy: #적 그리기
-                    if e.status["nowhp"] > 0:
-                        e.Draw()
-                if gamemanager.nowScene == "battle": speedbar.Draw() #speedbar 그리기
-                speedbar.Draw_locateguide()
-                HpUi_draw() #hp ui 그리기
-                if not battle.nowTurn == -1:
-                    if battle.nowTurn < 4:
-                        gamemanager.party[battle.nowTurn].Draw_turn()
-                    else:
-                        gamemanager.enemy[battle.nowTurn-4].Draw_turn()
-                    skill_inform_draw()
-            elif battle.turnSkillUsed:
-                skill_cut()
+            if battle.battle_state == None:
+                if not battle.turnSkillUsed:
+                    gamemanager.nowstage.Draw_background() #스테이지 배경 그리기
+                    if not gamemanager.nowScene == "battle": gamemanager.nowstage.Draw_choicechar()
+                    for c in gamemanager.party: #아군 그리기
+                        if c.status["nowhp"] > 0:
+                            c.Draw()
+                    for e in gamemanager.enemy: #적 그리기
+                        if e.status["nowhp"] > 0:
+                            e.Draw()
+                    if gamemanager.nowScene == "battle": speedbar.Draw() #speedbar 그리기
+                    speedbar.Draw_locateguide()
+                    HpUi_draw() #hp ui 그리기
+                    if not battle.nowTurn == -1:
+                        if battle.nowTurn < 4:
+                            gamemanager.party[battle.nowTurn].Draw_turn()
+                        else:
+                            gamemanager.enemy[battle.nowTurn-4].Draw_turn()
+                        skill_inform_draw()
+                elif battle.turnSkillUsed:
+                    skill_cut()
+            elif battle.battle_state == "lose":
+                battle.lose_draw()
+            elif battle.battle_state == "win":
+                battle.win_draw()
 
     fade.draw()
     gamemanager.update_canvas()

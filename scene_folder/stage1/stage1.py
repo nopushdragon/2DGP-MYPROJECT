@@ -6,6 +6,7 @@ from scene_folder.background_base import BackGround
 from scene_folder.stage_base import Stage
 from characters import Characters
 import fade
+import currency
 
 from .stage1_enemys import enemys
 
@@ -22,6 +23,8 @@ battleBox_on = load_image('source\\ui\\mainmenu_0004_mainmenuEN2.png')
 choiceChar = None
 
 def Reset(self):
+    self.ticket = 10
+    self.upgrade_stone = 10
     global choiceChar
     choiceChar = None
     import gamemanager

@@ -1,4 +1,10 @@
+import currency
+from pico2d import *
+
 class Stage :
+    ticket = 0
+    upgrade_stone = 0
+
     def __init__(self):
         pass
 
@@ -13,3 +19,7 @@ class Stage :
 
     def Draw_choicechar(self):
         pass
+
+    def get_rewards(self):
+        currency.ticket += self.ticket
+        currency.upgrade_stone += self.upgrade_stone
