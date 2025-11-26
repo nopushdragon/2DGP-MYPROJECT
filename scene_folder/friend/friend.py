@@ -12,6 +12,8 @@ choice_box = load_image('source\\ui\\choice_box.png')
 card = load_image('source\\ui\\card.png')
 card_char_bg = load_image('source\\ui\\card_char_bg.png')
 card_char = load_image('source\\ui\\card_char.png')
+nameBox = load_image('source\\ui\\namebox.png')
+font = load_font('source\\ui\\DungGeunMo.ttf', 40)
 
 choiceChar = None
 
@@ -27,6 +29,7 @@ def Draw():
     bbackground.Draw()
     background.Draw()
     char_draw()
+    choice_char_draw()
     ui.draw()
 
 def handle_events():
@@ -100,3 +103,25 @@ def Draw_choiceBox(n):
         choice_box.clip_draw(0, 0, 88, 88, (n - 9) * 160 + 800, 290, 100, 100)
     else:
         choice_box.clip_draw(0, 0, 88, 88, (n - 12) * 160 + 800, 190, 100, 100)
+
+def choice_char_draw():
+    global choiceChar
+    if choiceChar != None:
+        Characters[choiceChar].illust.clip_draw(0,0,Characters[choiceChar].illust.w,Characters[choiceChar].illust.h,200,570,300,400)
+        nameBox.clip_draw(0,0,nameBox.w,nameBox.h,200,400,300,50)
+        font.draw(150, 399, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(150, 401, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(149, 400, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(151, 400, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(150, 400, Characters[choiceChar].name, (230, 230, 230))
+        font.draw(475, 700, '능력치', (255, 255, 255))
+        font.draw(450, 600, f'체력: {Characters[choiceChar].status["maxhp"]}', (230, 230, 230))
+        font.draw(450, 550, f'공격력: {Characters[choiceChar].status["origin_atk"]}', (230, 230, 230))
+        font.draw(450, 500, f'방어력: {Characters[choiceChar].status["origin_def"]}', (230, 230, 230))
+        font.draw(450, 450, f'속도: {Characters[choiceChar].status["origin_speed"]}', (230, 230, 230))
+        if Characters[choiceChar].skill_1_icon != None:
+            Characters[choiceChar].skill_1_icon.clip_draw(0,0,Characters[choiceChar].skill_1_icon.w,Characters[choiceChar].skill_1_icon.h,75,325,50,50)
+        if Characters[choiceChar].skill_2_icon != None:
+            Characters[choiceChar].skill_2_icon.clip_draw(0,0,Characters[choiceChar].skill_2_icon.w,Characters[choiceChar].skill_2_icon.h,75,200,50,50)
+        if Characters[choiceChar].skill_3_icon != None:
+            Characters[choiceChar].skill_3_icon.clip_draw(0,0,Characters[choiceChar].skill_3_icon.w,Characters[choiceChar].skill_3_icon.h,75,75,50,50)

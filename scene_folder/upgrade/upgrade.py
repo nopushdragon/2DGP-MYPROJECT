@@ -12,6 +12,9 @@ choice_box = load_image('source\\ui\\choice_box.png')
 card = load_image('source\\ui\\card.png')
 card_char_bg = load_image('source\\ui\\card_char_bg.png')
 card_char = load_image('source\\ui\\card_char.png')
+nameBox = load_image('source\\ui\\namebox.png')
+font = load_font('source\\ui\\DungGeunMo.ttf', 40)
+upgrade_button = load_image('source\\ui\\upgrade_button.png')
 
 choiceChar = None
 
@@ -27,6 +30,7 @@ def Draw():
     bbackground.Draw()
     background.Draw()
     char_draw()
+    choice_char_draw()
     ui.draw()
 
 def handle_events():
@@ -100,3 +104,19 @@ def Draw_choiceBox(n):
         choice_box.clip_draw(0, 0, 88, 88, (n - 9) * 160 + 800, 290, 100, 100)
     else:
         choice_box.clip_draw(0, 0, 88, 88, (n - 12) * 160 + 800, 190, 100, 100)
+
+def choice_char_draw():
+    global choiceChar
+    if choiceChar != None:
+        Characters[choiceChar].illust.clip_draw(0,0,Characters[choiceChar].illust.w,Characters[choiceChar].illust.h,350,600,250,330)
+        nameBox.clip_draw(0,0,nameBox.w,nameBox.h,350,450,300,50)
+        font.draw(300, 449, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(300, 451, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(299, 450, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(301, 450, Characters[choiceChar].name, (0, 0, 0))
+        font.draw(300, 450, Characters[choiceChar].name, (230, 230, 230))
+
+        font.draw(50, 400, f'체력: {Characters[choiceChar].status["maxhp"]}', (230, 230, 230))
+        font.draw(50, 300, f'공격력: {Characters[choiceChar].status["origin_atk"]}', (230, 230, 230))
+        font.draw(50, 200, f'방어력: {Characters[choiceChar].status["origin_def"]}', (230, 230, 230))
+        font.draw(50, 100, f'속도: {Characters[choiceChar].status["origin_speed"]}', (230, 230, 230))
