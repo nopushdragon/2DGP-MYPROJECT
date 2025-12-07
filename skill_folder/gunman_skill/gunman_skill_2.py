@@ -4,7 +4,7 @@ from pico2d import *
 
 def create_skill_2(x, y, flip):
     skill = Skill(
-        [load_image(f'source\\skill\\gunman\\fire0{i}.png') for i in range(1, 9)],
+        [load_image(f'source\\skill\\gunman\\fire_small{i}.png') for i in range(1, 12)],
         x + 100 - (200 * int(flip)), y - 30, 80, 20, 0,
         0, 500, 0, 0.0, 0.2, flip, True, "enemy_all")
 
@@ -33,8 +33,8 @@ def create_skill_2(x, y, flip):
     def apply_effect_override(self, target, atk):
         for t in target:
             damage = atk - t.status["def"]
-            if damage <= 0:
-                damage = 0
+            if damage <= 10:
+                damage = 10
             t.status["nowhp"] -= damage
             if t.status["nowhp"] < 0:
                 t.status["nowhp"] = 0

@@ -6,12 +6,12 @@ class Character:
     illust = None
     nameBox = load_image('source\\ui\\namebox.png')
     namefont = load_font('source\\ui\\DungGeunMo.ttf', 40)
-    #skill_1_icon = None
-    #skill_2_icon = None
-    #skill_3_icon = None
     skill_1_icon = load_image(f'source\\skill_icon\\gunman\\hope_1103.png')
     skill_2_icon = load_image(f'source\\skill_icon\\gunman\\hope_1101.png')
     skill_3_icon = load_image(f'source\\skill_icon\\gunman\\hope_1102.png')
+    skill_1_inform = None
+    skill_2_inform = None
+    skill_3_inform = None
 
     def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None, get = False):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack

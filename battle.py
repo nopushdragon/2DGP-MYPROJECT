@@ -17,9 +17,10 @@ turnSkillUsed = False # 턴이 시작되고 스킬을 사용중인 걸 판단
 skillInform = None # 스킬 마우스로 1번 클릭하면 스킬 설명, 2번 클릭하면 스킬 사용하게끔 해줌
 target = [] # 스킬 대상인데 사실상 단일 스킬에만 쓰일 듯.
 damageAnimation = False # 데미지
+nowChar = None
 
 def Reset():
-    global nowTurn, turnSkillUsed, target, skillInform, damageAnimation, battle_state
+    global nowTurn, turnSkillUsed, target, skillInform, damageAnimation, battle_state,nowChar
     battle_state = None
     nowTurn = -1
     turnSkillUsed = False
@@ -27,9 +28,10 @@ def Reset():
     skillInform = None
     damageAnimation = False
     speedbar.Reset()
+    nowChar = None
 
 def Update(dt):
-    global nowTurn, turnSkillUsed,target, skillInform, battle_state
+    global nowTurn, turnSkillUsed,target, skillInform, battle_state,nowChar
     events = get_events()
     do_events()
 
@@ -171,6 +173,7 @@ def Update(dt):
                 speedbar.spdNums[nowTurn].x = 1000
                 nowTurn = -1
                 target.clear()
+                nowChar = None
 
 def do_events():
     for event in get_events():
