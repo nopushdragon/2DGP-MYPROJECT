@@ -1,4 +1,5 @@
 from pico2d import *
+from skill_folder.gunman_skill.gunman_skill_1 import create_skill_1
 
 class Character:
     evo = 1 #진화 단계
@@ -84,7 +85,8 @@ class Character:
             self.anime[self.anim_idx][self.frame].clip_draw(0, 0, 100, 100, self.x, self.y, 200, 200)
 
     def Skill_1(self):
-        pass
+        skill_1 = create_skill_1(self.x, self.y, self.flip)
+        self.skill.append(skill_1)
 
     def Skill_2(self):
         pass

@@ -1,6 +1,5 @@
 from pico2d import *
 from characters_folder.character_base import *
-from skill_folder.gunman_skill.gunman_skill_1 import create_skill_1
 
 gunman = Character([
     [load_image(f'source\\character\\hope\\hope01_0{i}.png')for i in range(1, 3)],
@@ -15,11 +14,6 @@ gunman.skill_2_icon = load_image(f'source\\skill_icon\\gunman\\hope_1101.png')
 gunman.skill_3_icon = load_image(f'source\\skill_icon\\gunman\\hope_1102.png')
 
 gunman.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 250, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":250}  # nowhp, maxhp, attack, speed
-
-def Skill_1_override(self):
-    skill_1 = create_skill_1(self.x, self.y, self.flip)
-    self.skill.append(skill_1)
-gunman.Skill_1 = Skill_1_override.__get__(gunman, Character)
 
 def Skill_2_override(self):
     pass

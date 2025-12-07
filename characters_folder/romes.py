@@ -12,9 +12,6 @@ romes.illust = load_image('source\\character\\romes\\hero_illust_05_Romes.png')
 romes.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 121, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":121}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-romes.Skill_1 = Skill_1_override.__get__(romes, Character)
 
 def Skill_2_override(self):
     pass

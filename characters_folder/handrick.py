@@ -12,9 +12,6 @@ handrick.illust = load_image('source\\character\\handrick\\hero_illust_02_Handri
 handrick.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-handrick.Skill_1 = Skill_1_override.__get__(handrick, Character)
 
 def Skill_2_override(self):
     pass

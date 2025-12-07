@@ -17,10 +17,6 @@ asha.skill_3_icon = load_image(f'source\\skill_icon\\asha\\asha_0901.png')
 asha.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 300, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":300}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    skill_1 = create_skill_1(self.x, self.y, self.flip)
-    self.skill.append(skill_1)
-asha.Skill_1 = Skill_1_override.__get__(asha, Character)
 
 def evolution_override(self):
     self.evo += 1

@@ -12,9 +12,6 @@ torome.illust = load_image('source\\character\\torome\\hero_illust_07_Torome.png
 torome.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 120, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":120}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-torome.Skill_1 = Skill_1_override.__get__(torome, Character)
 
 def Skill_2_override(self):
     pass

@@ -12,9 +12,6 @@ luna.illust = load_image('source\\character\\luna\\hero_illust_10_Luna.png')
 luna.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-luna.Skill_1 = Skill_1_override.__get__(luna, Character)
 
 def Skill_2_override(self):
     pass

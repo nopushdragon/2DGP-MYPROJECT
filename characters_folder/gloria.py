@@ -12,9 +12,6 @@ gloria.illust = load_image('source\\character\\gloria\\hero_illust_17_Gloria.png
 gloria.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 120, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":120}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-gloria.Skill_1 = Skill_1_override.__get__(gloria, Character)
 
 def Skill_2_override(self):
     pass

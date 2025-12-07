@@ -12,10 +12,6 @@ balbar.illust = load_image('source\\character\\balbar\\hero_illust_06_Balbar.png
 balbar.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 85, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":85}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-balbar.Skill_1 = Skill_1_override.__get__(balbar, Character)
-
 def Skill_2_override(self):
     pass
 balbar.Skill_2 = Skill_2_override.__get__(balbar, Character)

@@ -12,9 +12,6 @@ isli.illust = load_image('source\\character\\isli\\hero_illust_03_Islil.png')
 isli.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-isli.Skill_1 = Skill_1_override.__get__(isli, Character)
 
 def Skill_2_override(self):
     pass

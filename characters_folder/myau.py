@@ -12,9 +12,6 @@ myau.illust = load_image('source\\character\\myau\\hero_illust_15_Myau.png')
 myau.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-myau.Skill_1 = Skill_1_override.__get__(myau, Character)
 
 def Skill_2_override(self):
     pass

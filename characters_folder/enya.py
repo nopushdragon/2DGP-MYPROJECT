@@ -12,9 +12,6 @@ enya.illust = load_image('source\\character\\enya\\hero_illust_12_Enya.png')
 enya.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 110, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":110}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    pass
-enya.Skill_1 = Skill_1_override.__get__(enya, Character)
 
 def Skill_2_override(self):
     pass

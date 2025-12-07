@@ -18,11 +18,6 @@ kimu.skill_3_icon = load_image(f'source\\skill_icon\\asha\\asha_0901.png')
 kimu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 86, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":86}  # nowhp, maxhp, attack, speed
 
 
-def Skill_1_override(self):
-    skill_1 = create_skill_1(self.x, self.y, self.flip)
-    self.skill.append(skill_1)
-kimu.Skill_1 = Skill_1_override.__get__(kimu, Character)
-
 def Skill_2_override(self):
     pass
 kimu.Skill_2 = Skill_2_override.__get__(kimu, Character)
