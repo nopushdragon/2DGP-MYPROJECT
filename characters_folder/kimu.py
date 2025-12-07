@@ -1,6 +1,5 @@
 from pico2d import *
 from characters_folder.character_base import *
-from skill_folder.kimu_skill.kimu_skill_1 import create_skill_1
 
 kimu = Character([
     [load_image(f'source\\character\\kimu\\kimu01_0{i}.png') for i in range(1, 3)],

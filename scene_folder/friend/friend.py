@@ -120,8 +120,8 @@ def choice_char_draw():
         font.draw(450, 500, f'방어력: {Characters[choiceChar].status["origin_def"]}', (230, 230, 230))
         font.draw(450, 450, f'속도: {Characters[choiceChar].status["origin_speed"]}', (230, 230, 230))
         if Characters[choiceChar].skill_1_icon != None:
-            Characters[choiceChar].skill_1_icon.clip_draw(0,0,Characters[choiceChar].skill_1_icon.w,Characters[choiceChar].skill_1_icon.h,75,325,50,50)
+            Characters[choiceChar].skill_1_icon.clip_draw(0,0,Characters[choiceChar].skill_1_icon.w,Characters[choiceChar].skill_1_icon.h,150,200,150,150)
         if Characters[choiceChar].skill_2_icon != None:
-            Characters[choiceChar].skill_2_icon.clip_draw(0,0,Characters[choiceChar].skill_2_icon.w,Characters[choiceChar].skill_2_icon.h,75,200,50,50)
+            Characters[choiceChar].skill_2_icon.clip_draw(0,0,Characters[choiceChar].skill_2_icon.w,Characters[choiceChar].skill_2_icon.h,350,200,150,150)
         if Characters[choiceChar].skill_3_icon != None:
-            Characters[choiceChar].skill_3_icon.clip_draw(0,0,Characters[choiceChar].skill_3_icon.w,Characters[choiceChar].skill_3_icon.h,75,75,50,50)
+            Characters[choiceChar].skill_3_icon.clip_draw(0,0,Characters[choiceChar].skill_3_icon.w,Characters[choiceChar].skill_3_icon.h,550,200,150,150)
