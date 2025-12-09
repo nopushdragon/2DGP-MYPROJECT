@@ -1,5 +1,6 @@
 from skill_folder.skill_base import Skill
 from pico2d import *
+import sound
 
 
 def create_skill_1(x, y, flip):

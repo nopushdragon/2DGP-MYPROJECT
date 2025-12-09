@@ -31,6 +31,18 @@ def Skill_3_override(self):
     self.skill.append(skill_3)
 kimu.Skill_3 = Skill_3_override.__get__(kimu, Character)
 
+def skill_2_sound_override(self):
+    sound = load_wav('source\\sound\\sword.mp3')
+    sound.set_volume(64)
+    sound.play(1)
+asha.skill_2_sound = skill_2_sound_override.__get__(asha, Character)
+
+def skill_3_sound_override(self):
+    sound = load_wav('source\\sound\\buff.mp3')
+    sound.set_volume(64)
+    sound.play(1)
+asha.skill_3_sound = skill_3_sound_override.__get__(asha, Character)
+
 def Draw_turn_override(self):
     kimu.illust.clip_draw(0, 550, 1350, 1350, 150, 150, 300, 300)
     kimu.nameBox.clip_draw(125, 0, 125, 33, 150, 25,300,50)

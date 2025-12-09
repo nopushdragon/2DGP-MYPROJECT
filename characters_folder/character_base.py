@@ -1,5 +1,6 @@
 from pico2d import *
 from skill_folder.every_skill_1 import create_skill_1
+import sound
 
 class Character:
     evo = 1 #진화 단계
@@ -61,12 +62,12 @@ class Character:
                 self.attackMotionEndTimer = 0.0
                 self.frame = 0
                 self.attackMotionEnd = False
-                '''if self.state == "skill_1":
-                    self.Skill_1()
-                elif self.state == "skill_2":
-                    self.Skill_2()
-                elif self.state == "skill_3":
-                    self.Skill_3()'''
+                if self.state == "skill_1":
+                    self.skill_1_sound()
+                elif self.skill == "skill_2":
+                    self.skill_2_sound()
+                elif self.skill == "skill_3":
+                    self.skill_3_sound()
                 self.state = "using_skill"
 
         if not ((self.state == "skill_1" or self.state == "skill_2" or self.state == "skill_3") and self.frame == len(self.anime[2]) - 1):
@@ -92,6 +93,15 @@ class Character:
         pass
 
     def Skill_3(self):
+        pass
+
+    def skill_1_sound(self):
+        sound.skill_1_sound.play(1)
+
+    def skill_2_sound(self):
+        pass
+
+    def skill_3_sound(self):
         pass
 
     def Draw_turn(self):

@@ -43,11 +43,19 @@ def handle_events():
                 if 700 <= mx <= 900 and 40 <= my <= 90 and currency.ticket.quantity >= 1:
                     currency.ticket.quantity -= 1
                     get_stack.append(random.randint(1,150))
+                    if (get_stack[0] <= 15):
+                        sound.hero_sound.play(1)
+                    else:
+                        sound.upgrade_stone_sound.play(1)
                     get_event = True
                 elif 940 <= mx <= 1140 and 40 <= my <= 90 and currency.ticket.quantity >= 10:
                     currency.ticket.quantity -= 10
                     for _ in range(10):
                         get_stack.append(random.randint(1, 150))
+                    if (get_stack[0] <= 15):
+                        sound.hero_sound.play(1)
+                    else:
+                        sound.upgrade_stone_sound.play(1)
                     get_event = True
         elif get_event == True:
             if event.type == SDL_MOUSEBUTTONDOWN:
@@ -56,6 +64,11 @@ def handle_events():
                         if Characters[get_stack[0] - 1].get == False:
                             Characters[get_stack[0] - 1].get = True
                     get_stack.pop(0)
+                    if get_stack != []:
+                        if get_stack[0] <= 15:
+                            sound.hero_sound.play(1)
+                        else:
+                            sound.upgrade_stone_sound.play(1)
                     is_event = False
                     old_anime = None
                     new_anime = None

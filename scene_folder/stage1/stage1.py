@@ -25,7 +25,7 @@ choiceChar = None
 
 def Reset(self):
     self.ticket = 10
-    self.upgrade_stone = 10
+    self.upgrade_stone = 50
     global choiceChar
     choiceChar = None
     import gamemanager
@@ -115,6 +115,7 @@ def Draw_choiceBox(n):
 
 def Ready():
     gamemanager.nowScene = "battle"
+    sound.fight_start_sound.play(1)
 
     new_party = []  #party와 partylocate 순서 맞추기
     for loc in gamemanager.partylocate:

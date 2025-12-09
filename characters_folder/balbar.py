@@ -31,6 +31,18 @@ def Skill_3_override(self):
     self.skill.append(skill_3)
 balbar.Skill_3 = Skill_3_override.__get__(balbar, Character)
 
+def skill_2_sound_override(self):
+    sound = load_wav('source\\sound\\sword.mp3')
+    sound.set_volume(64)
+    sound.play(1)
+asha.skill_2_sound = skill_2_sound_override.__get__(asha, Character)
+
+def skill_3_sound_override(self):
+    sound = load_wav('source\\sound\\buff.mp3')
+    sound.set_volume(64)
+    sound.play(1)
+asha.skill_3_sound = skill_3_sound_override.__get__(asha, Character)
+
 def evolution_override(self):
     self.evo += 1
     self.anime = [

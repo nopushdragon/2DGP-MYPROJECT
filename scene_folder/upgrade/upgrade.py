@@ -5,6 +5,7 @@ from scene_folder.background_base import BackGround
 from characters import Characters
 import fade
 from currency import upgrade_stone
+import sound
 
 bbackground = BackGround(load_image('source\\background\\bg_home_morning.png'),WIDTH/2,HEIGHT/2,1024,800)
 background = BackGround(load_image('source\\background\\bg_friend.png'),WIDTH/2,HEIGHT/2,1024,800)
@@ -47,6 +48,7 @@ def handle_events():
                         (cnt < 9 and (cnt - 6) * 160 + 750 <= mx <= (cnt - 6) * 160 + 850 and 350 <= my <= 450)or
                         (cnt < 12 and (cnt - 9) * 160 + 750 <= mx <= (cnt - 9) * 160 + 850 and 250 <= my <= 350)or
                         (cnt < 15 and (cnt - 12) * 160 + 750 <= mx <= (cnt - 12) * 160 + 850 and 150 <= my <= 250)):
+                    sound.click_sound.play(1)
                     global choiceChar
                     if choiceChar == cnt:
                         choiceChar = None
@@ -55,18 +57,22 @@ def handle_events():
                             choiceChar = cnt
             if 500 <= mx <= 600 and 375 <= my <= 425 and choiceChar != None:
                 if upgrade_stone.quantity >= 10:
+                    sound.upgrade_button.play(1)
                     upgrade_stone.quantity -= 10
                     Characters[choiceChar].status["maxhp"] += 10
             elif 550 <= mx <= 650 and 275 <= my <= 325 and choiceChar != None:
                 if upgrade_stone.quantity >= 10:
+                    sound.upgrade_button.play(1)
                     upgrade_stone.quantity -= 10
                     Characters[choiceChar].status["origin_atk"] += 10
             elif 550 <= mx <= 650 and 175 <= my <= 225 and choiceChar != None:
                 if upgrade_stone.quantity >= 10:
+                    sound.upgrade_button.play(1)
                     upgrade_stone.quantity -= 10
                     Characters[choiceChar].status["origin_def"] += 10
             elif 550 <= mx <= 650 and 75 <= my <= 125 and choiceChar != None:
                 if upgrade_stone.quantity >= 10:
+                    sound.upgrade_button.play(1)
                     upgrade_stone.quantity -= 10
                     Characters[choiceChar].status["origin_speed"] += 5
         elif event.type == SDL_KEYDOWN:

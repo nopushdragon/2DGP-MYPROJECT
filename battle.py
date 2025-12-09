@@ -154,6 +154,7 @@ def Update(dt):
                         nowChar.skill[0].apply_effect(target,nowChar.status["atk"])
                         nowChar.skill.remove(p)
                     if len(nowChar.skill) == 0:
+
                         nowChar.state = "idle"
                         nowChar.frame = 0
 
@@ -175,6 +176,7 @@ def game_end():
             end_flag = False
     if end_flag == True:
         gamemanager.nowstage.get_rewards()
+        sound.lose_sound.play()
         return "lose"
 
     end_flag = True
@@ -184,6 +186,7 @@ def game_end():
     if end_flag == True:
         for _ in range(100):
             gamemanager.nowstage.get_rewards()
+            sound.win_sound.play(1)
         return "win"
 
     return None #싸우는 중
