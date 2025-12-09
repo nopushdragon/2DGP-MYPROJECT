@@ -19,14 +19,15 @@ party = []
 party.append(Characters[0])
 enemy = []
 
-nowstage = []
+nowstage = None
 partylocate = [(100,400),(200,400),(300,400),(400,400)]
 enemylocate = [(800,400),(900,400),(1000,400),(1100,400)]
 
 
 
 def GameUpdate(dt):
-    nowstage.Update(dt)
+    if nowstage:
+        nowstage.Update(dt)
     if nowScene == "battle":
         battle.Update(dt)
     for c in party:

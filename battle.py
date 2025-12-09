@@ -3,7 +3,7 @@
 from pico2d import *
 from scene_folder import speedbar
 import gamemanager
-from gamemanager import WIDTH, HEIGHT
+from gamemanager import HEIGHT
 import random
 import fade
 
@@ -193,7 +193,7 @@ def game_end():
         if e.status["nowhp"] > 0:
             end_flag = False
     if end_flag == True:
-        gamemanager.nowstage[0].get_rewards()
+        gamemanager.nowstage.get_rewards()
         return "win"
 
     return None #싸우는 중
@@ -204,6 +204,6 @@ def lose_draw():
 
 def win_draw():
     #win_image.clip_draw(0, 0, lose_image.w, lose_image.h, WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT)
-    rewards_font.draw(0,0, f"+ {gamemanager.nowstage[0].ticket}",(0,0,0))
-    rewards_font.draw(0,0, f"+ {gamemanager.nowstage[0].upgrade_stone}",(0,0,0))
+    rewards_font.draw(0,0, f"+ {gamemanager.nowstage.ticket}",(0,0,0))
+    rewards_font.draw(0,0, f"+ {gamemanager.nowstage.upgrade_stone}",(0,0,0))
     pass

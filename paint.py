@@ -28,7 +28,7 @@ def DrawAll(dt):
     elif gamemanager.nowScene == "upgrade":
         upgrade.Draw()
     else:
-        if gamemanager.nowScene in "stage1_ready" or "battle":    #나중에 다른 stage도 or로 추가
+        if gamemanager.nowScene and (gamemanager.nowScene.endswith("_ready") or gamemanager.nowScene == "battle"):    #나중에 다른 stage도 or로 추가
             if battle.battle_state == None:
                 if not battle.turnSkillUsed:
                     gamemanager.nowstage.Draw_background() #스테이지 배경 그리기
@@ -112,4 +112,3 @@ def HpUi_draw():
                 hp_enemy.clip_draw(0, 0, 114, 14,
                                    650-((114 - (int)(114 * (gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["nowhp"] / gamemanager.enemy[speedbar.spdNums.index(n) - 4].status["maxhp"]))) / 2), 180 - (50 * (speedbar.spdNums.index(n)-4)),
                                    (int)(114 * (gamemanager.enemy[speedbar.spdNums.index(n)-4].status["nowhp"] / gamemanager.enemy[speedbar.spdNums.index(n)-4].status["maxhp"])),14)
-

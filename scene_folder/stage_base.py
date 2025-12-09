@@ -21,5 +21,5 @@ class Stage :
         pass
 
     def get_rewards(self):
-        currency.ticket += self.ticket
-        currency.upgrade_stone += self.upgrade_stone
+        currency.ticket.quantity += self.ticket
+        currency.upgrade_stone.quantity += self.upgrade_stone
