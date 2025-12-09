@@ -5,14 +5,14 @@ from skill_folder.usueu_skill.usueu_skill_2 import create_skill_2
 from skill_folder.usueu_skill.usueu_skill_3 import create_skill_3
 
 usueu = Character([
-    [load_image(f'source\\character\\usueu\\usueu01_0{i}.png') for i in range(1, 3)],
-    [load_image(f'source\\character\\usueu\\usueu01_0{i}.png') for i in range(3, 5)],
-    [load_image(f'source\\character\\usueu\\usueu01_0{i}.png') for i in range(5, 8)]
+    [load_image(f'source\\character\\usueu\\usueu04_0{i}.png') for i in range(1, 3)],
+    [load_image(f'source\\character\\usueu\\usueu04_0{i}.png') for i in range(3, 5)],
+    [load_image(f'source\\character\\usueu\\usueu04_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],flip = True, name = "우스유")
 
 usueu.illust = load_image('source\\character\\usueu\\hero_illust_20_Usuu.png')
 
-usueu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
+usueu.status = {"nowhp": 450, "maxhp":450, "atk": 30, "def":30, "speed": 52, "condition":[], "origin_atk":30, "origin_def" : 30, "origin_speed":52}  # nowhp, maxhp, attack, speed
 
 usueu.skill_1_icon = load_image(f'source\\skill_icon\\usueu\\kar_1302.png')
 usueu.skill_2_icon = load_image(f'source\\skill_icon\\usueu\\kar_1303.png')

@@ -45,6 +45,7 @@ def handle_events():
                         (cnt < 9 and (cnt - 6) * 160 + 750 <= mx <= (cnt - 6) * 160 + 850 and 350 <= my <= 450)or
                         (cnt < 12 and (cnt - 9) * 160 + 750 <= mx <= (cnt - 9) * 160 + 850 and 250 <= my <= 350)or
                         (cnt < 15 and (cnt - 12) * 160 + 750 <= mx <= (cnt - 12) * 160 + 850 and 150 <= my <= 250)):
+                    sound.click_sound.play(1)
                     global choiceChar
                     if choiceChar == cnt:
                         choiceChar = None

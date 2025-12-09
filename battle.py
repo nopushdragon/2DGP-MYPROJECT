@@ -6,11 +6,13 @@ import gamemanager
 from gamemanager import HEIGHT
 import random
 import fade
+import sound
 
 battle_state = None #None: 배틀중, "win": 승리화면, "lose": 패배화면
-#lose_image = load_image(None)
-#win_image = load_image(None)
+lose_image = load_image('source\\background\\lose.png')
+win_image = load_image('source\\background\\win.png')
 rewards_font = load_font('source\\ui\\DungGeunMo.ttf', 40)
+
 
 nowTurn = -1  # -1이면 스피드바 진행, 0~3이면 아군 턴, 4~7이면 적군 턴
 turnSkillUsed = False # 턴이 시작되고 스킬을 사용중인 걸 판단
@@ -164,14 +166,15 @@ def Update(dt):
 def do_events():
     for event in get_events():
         if event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE: #esc
+            sound.play_main_bgm()
             fade.fade_out("home")
-
 def game_end():
     end_flag = True
     for c in gamemanager.party:  # 패배
         if c.status["nowhp"] > 0:
             end_flag = False
     if end_flag == True:
+        gamemanager.nowstage.get_rewards()
         return "lose"
 
     end_flag = True
@@ -179,17 +182,20 @@ def game_end():
         if e.status["nowhp"] > 0:
             end_flag = False
     if end_flag == True:
-        gamemanager.nowstage.get_rewards()
+        for _ in range(100):
+            gamemanager.nowstage.get_rewards()
         return "win"
 
     return None #싸우는 중
 
 def lose_draw():
-    #lose_image.clip_draw(0,0,lose_image.w,lose_image.h, WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    lose_image.clip_draw(0,0,lose_image.w,lose_image.h, gamemanager.WIDTH/2, gamemanager.HEIGHT/2, gamemanager.WIDTH, gamemanager.HEIGHT)
+    rewards_font.draw(gamemanager.WIDTH / 2, gamemanager.HEIGHT / 2, f"+ {gamemanager.nowstage.ticket} 티켓",(100, 100, 0))
+    rewards_font.draw(gamemanager.WIDTH / 2, gamemanager.HEIGHT / 2 - 50,f"+ {gamemanager.nowstage.upgrade_stone} 업그레이드 스톤", (100, 100, 0))
+    rewards_font.draw(gamemanager.WIDTH / 2, gamemanager.HEIGHT / 2 - 100, "esc를 눌러서 돌아가세요.", (100, 100, 0))
     pass
 
 def win_draw():
-    #win_image.clip_draw(0, 0, lose_image.w, lose_image.h, WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT)
-    rewards_font.draw(gamemanager.WIDTH/2,gamemanager.HEIGHT/2, f"+ {gamemanager.nowstage.ticket}",(100,100,0))
-    rewards_font.draw(gamemanager.WIDTH/2,gamemanager.HEIGHT/2, f"+ {gamemanager.nowstage.upgrade_stone}",(100,100,0))
+    win_image.clip_draw(0, 0, lose_image.w, lose_image.h, gamemanager.WIDTH / 2, gamemanager.HEIGHT / 2, gamemanager.WIDTH, gamemanager.HEIGHT)
+    rewards_font.draw(gamemanager.WIDTH/2,gamemanager.HEIGHT/2, "당신은 이제 모든 힘에 통달했습니다. 하산하십시오.",(100,100,0))
     pass

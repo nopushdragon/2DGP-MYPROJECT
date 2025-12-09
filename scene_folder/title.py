@@ -23,6 +23,7 @@ def handle_events():
         if event.type == SDL_MOUSEBUTTONDOWN:
             mx, my = event.x, HEIGHT - event.y
             if( WIDTH / 2 - 200 <= mx <= WIDTH//2 + 200 and HEIGHT / 2 - 325 <= my <= HEIGHT//2 - 275):
+                sound.start_sound.play(1)
                 fade.fade_out("home")
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             close_canvas()

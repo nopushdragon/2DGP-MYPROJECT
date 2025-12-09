@@ -5,14 +5,14 @@ from skill_folder.kimu_skill.kimu_skill_3 import create_skill_3
 
 
 kimu = Character([
-    [load_image(f'source\\character\\kimu\\kimu01_0{i}.png') for i in range(1, 3)],
-    [load_image(f'source\\character\\kimu\\kimu01_0{i}.png') for i in range(3, 5)],
-    [load_image(f'source\\character\\kimu\\kimu01_0{i}.png') for i in range(5, 8)]
+    [load_image(f'source\\character\\kimu\\kimu04_0{i}.png') for i in range(1, 3)],
+    [load_image(f'source\\character\\kimu\\kimu04_0{i}.png') for i in range(3, 5)],
+    [load_image(f'source\\character\\kimu\\kimu04_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],flip = True,name = "키무")
 
 kimu.illust = load_image('source\\character\\kimu\\hero_illust_04_Kimu.png')
 
-kimu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 86, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":86}  # nowhp, maxhp, attack, speed
+kimu.status = {"nowhp": 500, "maxhp":500, "atk": 50, "def":30, "speed": 92, "condition":[], "origin_atk":50, "origin_def" : 30, "origin_speed":92}  # nowhp, maxhp, attack, speed
 
 kimu.skill_1_icon = load_image(f'source\\skill_icon\\kimu\\kimu_0402.png')
 kimu.skill_2_icon = load_image(f'source\\skill_icon\\kimu\\kimu_0401.png')

@@ -5,14 +5,14 @@ from skill_folder.romes_skill.romes_skill_3 import create_skill_3
 
 
 romes = Character([
-    [load_image(f'source\\character\\romes\\romes01_0{i}.png') for i in range(1, 3)],
-    [load_image(f'source\\character\\romes\\romes01_0{i}.png') for i in range(3, 5)],
-    [load_image(f'source\\character\\romes\\romes01_0{i}.png') for i in range(5, 8)]
+    [load_image(f'source\\character\\romes\\romes04_0{i}.png') for i in range(1, 3)],
+    [load_image(f'source\\character\\romes\\romes04_0{i}.png') for i in range(3, 5)],
+    [load_image(f'source\\character\\romes\\romes04_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],flip = True, name = "로메스")
 
 romes.illust = load_image('source\\character\\romes\\hero_illust_05_Romes.png')
 
-romes.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 121, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":121}  # nowhp, maxhp, attack, speed
+romes.status = {"nowhp": 370, "maxhp":370, "atk": 50, "def":20, "speed": 110, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":110}  # nowhp, maxhp, attack, speed
 
 romes.skill_1_icon = load_image(f'source\\skill_icon\\romes\\romes_0501.png')
 romes.skill_2_icon = load_image(f'source\\skill_icon\\romes\\romes_0502.png')

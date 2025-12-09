@@ -68,10 +68,18 @@ def handle_events():
     for event in events:
         if event.type == SDL_MOUSEBUTTONDOWN:
             mx, my = event.x, HEIGHT - event.y
-            if( 30 <= mx <= 190 and 40 <= my <= 110): fade.fade_out("friend")
-            elif( 230 <= mx <= 390 and 40 <= my <= 110): fade.fade_out("shop")
-            elif( 430 <= mx <= 590 and 40 <= my <= 110): fade.fade_out("upgrade")
-            elif( 980 <= mx <= 1180 and 40 <= my <= 100): fade.fade_out("stage1")
+            if( 30 <= mx <= 190 and 40 <= my <= 110):
+                sound.friend_sound.play(1)
+                fade.fade_out("friend")
+            elif( 230 <= mx <= 390 and 40 <= my <= 110):
+                sound.shop_sound.play(1)
+                fade.fade_out("shop")
+            elif( 430 <= mx <= 590 and 40 <= my <= 110):
+                sound.upgrade_sound.play(1)
+                fade.fade_out("upgrade")
+            elif( 980 <= mx <= 1180 and 40 <= my <= 100):
+                sound.battle_start_sound.play(1)
+                fade.fade_out("stage1")
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_ESCAPE:
                 fade.fade_out("title")
