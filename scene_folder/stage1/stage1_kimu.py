@@ -12,4 +12,4 @@ kimu.skill_1_icon = load_image(f'source\\skill_icon\\asha\\asha_0904.png')
 kimu.skill_2_icon = load_image(f'source\\skill_icon\\asha\\asha_0903.png')
 kimu.skill_3_icon = load_image(f'source\\skill_icon\\asha\\asha_0901.png')
 
-kimu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 210, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":210}  # nowhp, maxhp, attack, speed
+kimu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 140, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":140}  # nowhp, maxhp, attack, speed

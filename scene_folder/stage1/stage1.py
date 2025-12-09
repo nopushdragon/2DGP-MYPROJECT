@@ -124,6 +124,9 @@ def Ready():
         new_party.append(found)
     gamemanager.party = new_party
 
+    for p in gamemanager.party:
+        p.reset()
+
     # 게임 완료하면 speedbar에 spdNum의 speed 바에 각 캐릭터에 맞는 speed 넣어줌
     cnt = 0
     for n in gamemanager.party:

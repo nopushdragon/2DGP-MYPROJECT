@@ -14,11 +14,13 @@ torome.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 120, "
 
 
 def Skill_2_override(self):
-    pass
+    skill_2 = create_skill_2(self.x, self.y, self.flip)
+    self.skill.append(skill_2)
 torome.Skill_2 = Skill_2_override.__get__(torome, Character)
 
 def Skill_3_override(self):
-    pass
+    skill_3 = create_skill_3(self.x, self.y, self.flip)
+    self.skill.append(skill_3)
 torome.Skill_3 = Skill_3_override.__get__(torome, Character)
 
 def evolution_override(self):

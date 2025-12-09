@@ -18,11 +18,13 @@ kimu.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 86, "con
 
 
 def Skill_2_override(self):
-    pass
+    skill_2 = create_skill_2(self.x, self.y, self.flip)
+    self.skill.append(skill_2)
 kimu.Skill_2 = Skill_2_override.__get__(kimu, Character)
 
 def Skill_3_override(self):
-    pass
+    skill_3 = create_skill_3(self.x, self.y, self.flip)
+    self.skill.append(skill_3)
 kimu.Skill_3 = Skill_3_override.__get__(kimu, Character)
 
 def Draw_turn_override(self):

@@ -5,7 +5,7 @@ from pico2d import *
 def create_skill_2(x, y, flip):
     skill = Skill(
         [load_image(f'source\\skill\\gunman\\fire_small{i}.png') for i in range(1, 12)],
-        x + 100 - (200 * int(flip)), y - 30, 80, 20, 0,
+        x + 100 - (200 * int(flip)), y - 30, 80, 20, 3,
         0, 500, 0, 0.0, 0.2, flip, True, "enemy_all")
 
     def Update_override(self, dt, target_x, target_y):

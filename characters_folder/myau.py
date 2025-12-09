@@ -14,11 +14,13 @@ myau.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "co
 
 
 def Skill_2_override(self):
-    pass
+    skill_2 = create_skill_2(self.x, self.y, self.flip)
+    self.skill.append(skill_2)
 myau.Skill_2 = Skill_2_override.__get__(myau, Character)
 
 def Skill_3_override(self):
-    pass
+    skill_3 = create_skill_3(self.x, self.y, self.flip)
+    self.skill.append(skill_3)
 myau.Skill_3 = Skill_3_override.__get__(myau, Character)
 
 def evolution_override (self):

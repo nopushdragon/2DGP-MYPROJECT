@@ -1,5 +1,5 @@
 from pico2d import *
-from skill_folder.gunman_skill.gunman_skill_1 import create_skill_1
+from skill_folder.every_skill_1 import create_skill_1
 
 class Character:
     evo = 1 #진화 단계
