@@ -9,7 +9,7 @@ from scene_folder.friend import friend
 from scene_folder.upgrade import upgrade
 
 hp_font = load_font('source\\ui\\DungGeunMo.ttf',15)
-skill_font = load_font('source\\ui\\DungGeunMo.ttf',20)
+skill_font = load_font('source\\ui\\DungGeunMo.ttf',15)
 hp_base = load_image('source\\ui\\hp_base.png')
 hp_team = load_image('source\\ui\\hp_team.png')
 hp_enemy = load_image('source\\ui\\hp_enemy.png')
@@ -87,13 +87,13 @@ def skill_inform_draw():
 
         if battle.skillInform == "skill_1":
             informBox.clip_draw(0, 0, 88, 88, 850, 100, 110, 110)
-            skill_font.draw(800, 200, f"{battle.nowChar.skill_1_inform}", (230, 230, 230))
+            skill_font.draw(775, 200, f"{battle.nowChar.skill_1_inform}", (230, 230, 230))
         elif battle.skillInform == "skill_2":
             informBox.clip_draw(0, 0, 88, 88, 975, 100, 110, 110)
-            skill_font.draw(800, 200, f"{battle.nowChar.skill_2_inform}", (230, 230, 230))
+            skill_font.draw(775, 200, f"{battle.nowChar.skill_2_inform}", (230, 230, 230))
         elif battle.skillInform == "skill_3":
             informBox.clip_draw(0, 0, 88, 88, 1100, 100, 110, 110)
-            skill_font.draw(800, 200, f"{battle.nowChar.skill_3_inform}", (230, 230, 230))
+            skill_font.draw(775, 200, f"{battle.nowChar.skill_3_inform}", (230, 230, 230))
 
 def HpUi_draw():
     if gamemanager.nowScene == "battle":

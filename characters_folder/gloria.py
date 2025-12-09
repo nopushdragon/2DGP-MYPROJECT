@@ -1,5 +1,8 @@
 from pico2d import load_image
 from characters_folder.character_base import *
+from skill_folder.gloria_skill.gloria_skill_2 import create_skill_2
+from skill_folder.gloria_skill.gloria_skill_3 import create_skill_3
+
 
 gloria = Character([
     [load_image(f'source\\character\\gloria\\gloria01_0{i}.png') for i in range(1, 3)],
@@ -11,7 +14,12 @@ gloria.illust = load_image('source\\character\\gloria\\hero_illust_17_Gloria.png
 
 gloria.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 120, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":120}  # nowhp, maxhp, attack, speed
 
-
+gloria.skill_1_icon = load_image(f'source\\skill_icon\\gloria\\klat_0802.png')
+gloria.skill_2_icon = load_image(f'source\\skill_icon\\gloria\\nor_attck_type.png')
+gloria.skill_3_icon = load_image(f'source\\skill_icon\\gloria\\kar_1304.png')
+gloria.skill_1_inform = f"적 단일 공격, {gloria.status["atk"]}의 피해를 줍니다."
+gloria.skill_2_inform = f"아군 전체 버프, 아군의 공격력을 10 올립니다."
+gloria.skill_3_inform = f"적 단일 공격, {gloria.status["atk"]} * 1.5의 피해를 줍니다."
 
 def Skill_2_override(self):
     skill_2 = create_skill_2(self.x, self.y, self.flip)

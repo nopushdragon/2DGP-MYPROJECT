@@ -8,7 +8,7 @@ balbar = Character([
     [load_image(f'source\\character\\balbar\\balbar01_0{i}.png') for i in range(1, 3)],
     [load_image(f'source\\character\\balbar\\balbar01_0{i}.png') for i in range(3, 5)],
     [load_image(f'source\\character\\balbar\\balbar01_0{i}.png') for i in range(5, 8)]
-], 100, 400, [],name = "발바",get = True)
+], 100, 400, [],name = "발바")
 
 balbar.illust = load_image('source\\character\\balbar\\hero_illust_06_Balbar.png')
 

@@ -1,5 +1,8 @@
 from pico2d import load_image
 from characters_folder.character_base import *
+from skill_folder.ext_skill.ext_skill_2 import create_skill_2
+from skill_folder.ext_skill.ext_skill_3 import create_skill_3
+
 
 ext = Character([
     [load_image(f'source\\character\\ext\\ext01_0{i}.png') for i in range(1, 3)],

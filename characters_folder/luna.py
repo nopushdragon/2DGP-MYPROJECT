@@ -1,5 +1,8 @@
 from pico2d import load_image
 from characters_folder.character_base import *
+from skill_folder.luna_skill.luna_skill_2 import create_skill_2
+from skill_folder.luna_skill.luna_skill_3 import create_skill_3
+
 
 luna = Character([
     [load_image(f'source\\character\\luna\\luna01_0{i}.png') for i in range(1, 3)],
@@ -11,7 +14,12 @@ luna.illust = load_image('source\\character\\luna\\hero_illust_10_Luna.png')
 
 luna.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
 
-
+luna.skill_1_icon = load_image(f'source\\skill_icon\\luna\\klat_0804.png')
+luna.skill_2_icon = load_image(f'source\\skill_icon\\luna\\luna_1002.png')
+luna.skill_3_icon = load_image(f'source\\skill_icon\\luna\\luna_1001.png')
+luna.skill_1_inform = f"적 단일 공격, {luna.status["atk"]}의 피해를 줍니다."
+luna.skill_2_inform = f"적 전체 디버프, 적의 방어력을 10 낮춥니다."
+luna.skill_3_inform = f"적 전체 공격, {luna.status["atk"]}의 피해를 줍니다."
 
 def Skill_2_override(self):
     skill_2 = create_skill_2(self.x, self.y, self.flip)

@@ -7,7 +7,7 @@ greg = Character([
     [load_image(f'source\\character\\greg\\greg01_0{i}.png') for i in range(1, 3)],
     [load_image(f'source\\character\\greg\\greg01_0{i}.png') for i in range(3, 5)],
     [load_image(f'source\\character\\greg\\greg01_0{i}.png') for i in range(5, 8)]
-], 100, 400, [],name = "그렉",get = True)
+], 100, 400, [],name = "그렉")
 
 greg.illust = load_image('source\\character\\greg\\hero_illust_16_Greg.png')
 

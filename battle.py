@@ -91,8 +91,7 @@ def Update(dt):
                                 else:
                                     skillInform = "skill_3"
                 else:
-                    #rd_skill = random.randint(1,4)
-                    rd_skill = 1
+                    rd_skill = random.randint(1,3)
                     if rd_skill == 1:
                         nowChar.state = "skill_1"
                         nowChar.Skill_1()
@@ -102,19 +101,6 @@ def Update(dt):
                     elif rd_skill == 3:
                         nowChar.state = "skill_3"
                         nowChar.Skill_3()
-
-                    while nowChar.skill[0].nowCooltime > 0:
-                        nowChar.skill.clear()
-                        rd_skill = random.randint(1,3)
-                        if rd_skill == 1:
-                            nowChar.state = "skill_1"
-                            nowChar.Skill_1()
-                        elif rd_skill == 2:
-                            nowChar.state = "skill_2"
-                            nowChar.Skill_2()
-                        elif rd_skill == 3:
-                            nowChar.state = "skill_3"
-                            nowChar.Skill_3()
 
                     nowChar.frame = 0
                     nowChar.frameTimer = 0.0
