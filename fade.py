@@ -3,6 +3,7 @@ from stages import Stages
 import gamemanager
 import characters
 import battle
+import sound
 
 black_fade_image = load_image('source\\background\\fade_black.png')
 
@@ -40,6 +41,8 @@ def update(dt):
                     gamemanager.nowScene = f"{next_scene}_ready"
                     gamemanager.nowstage = Stages[int(next_scene[-1]) - 1]
                     battle.Reset()
+                    if next_scene == "stage1":
+                        sound.play_stage1_bgm()
                 elif next_scene == "home":
                     gamemanager.home.Reset()
                     gamemanager.nowScene = next_scene

@@ -190,6 +190,6 @@ def lose_draw():
 
 def win_draw():
     #win_image.clip_draw(0, 0, lose_image.w, lose_image.h, WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT)
-    rewards_font.draw(0,0, f"+ {gamemanager.nowstage.ticket}",(0,0,0))
-    rewards_font.draw(0,0, f"+ {gamemanager.nowstage.upgrade_stone}",(0,0,0))
+    rewards_font.draw(gamemanager.WIDTH/2,gamemanager.HEIGHT/2, f"+ {gamemanager.nowstage.ticket}",(100,100,0))
+    rewards_font.draw(gamemanager.WIDTH/2,gamemanager.HEIGHT/2, f"+ {gamemanager.nowstage.upgrade_stone}",(100,100,0))
     pass

@@ -6,6 +6,7 @@ import ui
 import fade
 import currency
 import random
+import sound
 
 get_stack = []
 get_event = False #뽑기 이벤트 위한 변수

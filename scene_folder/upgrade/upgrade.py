@@ -4,6 +4,7 @@ from gamemanager import WIDTH, HEIGHT
 from scene_folder.background_base import BackGround
 from characters import Characters
 import fade
+from currency import upgrade_stone
 
 bbackground = BackGround(load_image('source\\background\\bg_home_morning.png'),WIDTH/2,HEIGHT/2,1024,800)
 background = BackGround(load_image('source\\background\\bg_friend.png'),WIDTH/2,HEIGHT/2,1024,800)
@@ -14,6 +15,7 @@ card_char_bg = load_image('source\\ui\\card_char_bg.png')
 card_char = load_image('source\\ui\\card_char.png')
 nameBox = load_image('source\\ui\\namebox.png')
 font = load_font('source\\ui\\DungGeunMo.ttf', 40)
+small_font= load_font('source\\ui\\DungGeunMo.ttf', 15)
 upgrade_button = load_image('source\\ui\\upgrade_button.png')
 
 choiceChar = None
@@ -51,7 +53,22 @@ def handle_events():
                     else:
                         if (Characters[cnt].get == True):
                             choiceChar = cnt
-                cnt += 1
+            if 500 <= mx <= 600 and 375 <= my <= 425 and choiceChar != None:
+                if upgrade_stone.quantity >= 10:
+                    upgrade_stone.quantity -= 10
+                    Characters[choiceChar].status["maxhp"] += 10
+            elif 550 <= mx <= 650 and 275 <= my <= 325 and choiceChar != None:
+                if upgrade_stone.quantity >= 10:
+                    upgrade_stone.quantity -= 10
+                    Characters[choiceChar].status["origin_atk"] += 10
+            elif 550 <= mx <= 650 and 175 <= my <= 225 and choiceChar != None:
+                if upgrade_stone.quantity >= 10:
+                    upgrade_stone.quantity -= 10
+                    Characters[choiceChar].status["origin_def"] += 10
+            elif 550 <= mx <= 650 and 75 <= my <= 125 and choiceChar != None:
+                if upgrade_stone.quantity >= 10:
+                    upgrade_stone.quantity -= 10
+                    Characters[choiceChar].status["origin_speed"] += 5
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_ESCAPE:
                 fade.fade_out("home")
@@ -116,7 +133,14 @@ def choice_char_draw():
         font.draw(301, 450, Characters[choiceChar].name, (0, 0, 0))
         font.draw(300, 450, Characters[choiceChar].name, (230, 230, 230))
 
+        small_font.draw(250, 50, '업그레이드에는 10개의 강화석이 필요합니다.', (230, 230, 230))
+
         font.draw(50, 400, f'체력: {Characters[choiceChar].status["maxhp"]}', (230, 230, 230))
         font.draw(50, 300, f'공격력: {Characters[choiceChar].status["origin_atk"]}', (230, 230, 230))
         font.draw(50, 200, f'방어력: {Characters[choiceChar].status["origin_def"]}', (230, 230, 230))
         font.draw(50, 100, f'속도: {Characters[choiceChar].status["origin_speed"]}', (230, 230, 230))
+
+        upgrade_button.clip_draw(0, 0, upgrade_button.w, upgrade_button.h, 550, 400, 100, 50)
+        upgrade_button.clip_draw(0, 0, upgrade_button.w, upgrade_button.h, 550, 300, 100, 50)
+        upgrade_button.clip_draw(0, 0, upgrade_button.w, upgrade_button.h, 550, 200, 100, 50)
+        upgrade_button.clip_draw(0, 0, upgrade_button.w, upgrade_button.h, 550, 100, 100, 50)

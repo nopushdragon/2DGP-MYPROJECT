@@ -7,6 +7,7 @@ from scene_folder.stage_base import Stage
 from characters import Characters
 import fade
 import currency
+import sound
 
 from .stage1_enemys import enemys
 
@@ -76,6 +77,7 @@ def UPDATE_overriding(self, dt):
                     if len(gamemanager.party) == 4:
                         Ready()
             elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+                sound.play_main_bgm()
                 fade.fade_out("home")
 stage1.Update = UPDATE_overriding.__get__(stage1, Stage)
 

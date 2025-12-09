@@ -3,7 +3,7 @@ from currency import *
 from gamemanager import WIDTH, HEIGHT
 import gamemanager
 
-option = load_image('source\\ui\\option.png')
+#option = load_image('source\\ui\\option.png')
 font = load_font('source\\ui\\DungGeunMo.TTF', 20)
 
 def draw():
@@ -15,7 +15,7 @@ def draw():
     font.draw(WIDTH - 150, HEIGHT - 25, f" {ticket.quantity}", (255, 255, 255))
     font.draw(WIDTH - 320, HEIGHT - 25, f" {upgrade_stone.quantity}", (255, 255, 255))
 
-    option.clip_draw(0, 0, 62, 62, WIDTH - 35, HEIGHT - 25, 40, 40)
+    #option.clip_draw(0, 0, option.w, option.h, WIDTH - 35, HEIGHT - 25, 40, 40)
 
     if gamemanager.nowScene == "home":
         pass

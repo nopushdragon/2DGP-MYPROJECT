@@ -4,6 +4,7 @@ from gamemanager import WIDTH, HEIGHT
 from scene_folder.background_base import BackGround
 from characters import Characters
 import fade
+import sound
 
 bbackground = BackGround(load_image('source\\background\\bg_home_morning.png'),WIDTH/2,HEIGHT/2,1024,800)
 background = BackGround(load_image('source\\background\\bg_friend.png'),WIDTH/2,HEIGHT/2,1024,800)

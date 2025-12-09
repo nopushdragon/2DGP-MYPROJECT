@@ -2,6 +2,7 @@
 from gamemanager import WIDTH, HEIGHT
 from pico2d import *
 import fade
+import sound
 
 titleBackground = load_image('source\\background\\ai_start.png')
 startButton = load_image('source\\background\\button1.png')

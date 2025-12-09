@@ -6,6 +6,7 @@ import fade
 from characters import Characters
 import random
 import ui
+import sound
 
 background = BackGround(load_image('source\\background\\bg_home_morning.png'),WIDTH/2,HEIGHT/2,1024,800)
 ground = load_image('source\\background\\home_ground.png')
