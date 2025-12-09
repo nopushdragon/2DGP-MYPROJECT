@@ -21,6 +21,11 @@ kimu.skill_1_inform = f"적 단일 공격, {kimu.status["atk"]}의 피해를 줍
 kimu.skill_2_inform = f"아군 단일 회복, 아군의 체력을 {kimu.status["atk"]} * 2회복합니다."
 kimu.skill_3_inform = f"아군 전체 버프, 아군의 방어력,속도를 10 올립니다."
 
+kimu.skill_2_sound = load_wav('source\\sound\\heal.mp3')
+kimu.skill_2_sound.set_volume(32)
+kimu.skill_3_sound = load_wav('source\\sound\\buff.mp3')
+kimu.skill_3_sound.set_volume(32)
+
 def Skill_2_override(self):
     skill_2 = create_skill_2(self.x, self.y, self.flip)
     self.skill.append(skill_2)

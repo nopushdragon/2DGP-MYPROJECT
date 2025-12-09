@@ -9,7 +9,7 @@ asha = Character([
     [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(5, 8)]
 ], 100, 400, [],name = "아샤", get = True)
 
-asha.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 150, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":150}  # nowhp, maxhp, attack, speed
+asha.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 150, "condition":[], "origin_atk":50, "origin_def" : 12, "origin_speed":150}  # nowhp, maxhp, attack, speed
 
 # ui에 필요한 리소스들
 asha.illust = load_image('source\\character\\asha\\hero_illust_09_Asha.png')
@@ -19,6 +19,11 @@ asha.skill_3_icon = load_image(f'source\\skill_icon\\asha\\asha_0901.png')
 asha.skill_1_inform = f"적 단일 공격, {asha.status["atk"]}의 피해를 줍니다."
 asha.skill_2_inform = f"적 단일 공격, {asha.status["atk"]}의 피해를 줍니다."
 asha.skill_3_inform = f"아군 전체 버프, 아군의 speed를 10 올립니다."
+
+asha.skill_2_sound = load_wav('source\\sound\\sword.mp3')
+asha.skill_2_sound.set_volume(32)
+asha.skill_3_sound = load_wav('source\\sound\\buff.mp3')
+asha.skill_3_sound.set_volume(32)
 
 
 def Skill_2_override(self):
@@ -30,18 +35,6 @@ def Skill_3_override(self):
     skill_3 = create_skill_3(self.x, self.y, self.flip)
     self.skill.append(skill_3)
 asha.Skill_3 = Skill_3_override.__get__(asha, Character)
-
-def skill_2_sound_override(self):
-    sound = load_wav('source\\sound\\sword.mp3')
-    sound.set_volume(64)
-    sound.play(1)
-asha.skill_2_sound = skill_2_sound_override.__get__(asha, Character)
-
-def skill_3_sound_override(self):
-    sound = load_wav('source\\sound\\buff.mp3')
-    sound.set_volume(64)
-    sound.play(1)
-asha.skill_3_sound = skill_3_sound_override.__get__(asha, Character)
 
 def evolution_override(self):
     self.evo += 1

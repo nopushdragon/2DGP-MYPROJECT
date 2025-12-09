@@ -21,6 +21,11 @@ kimu.skill_1_inform = f"적 단일 공격, {kimu.status["atk"]}의 피해를 줍
 kimu.skill_2_inform = f"아군 단일 회복, 아군의 체력을 {kimu.status["atk"]} * 2회복합니다."
 kimu.skill_3_inform = f"아군 전체 버프, 아군의 방어력,속도를 10 올립니다."
 
+kimu.skill_2_sound = load_wav('source\\sound\\heal.mp3')
+kimu.skill_2_sound.set_volume(32)
+kimu.skill_3_sound = load_wav('source\\sound\\buff.mp3')
+kimu.skill_3_sound.set_volume(32)
+
 def Skill_2_override(self):
     skill_2 = create_skill_2(self.x, self.y, self.flip)
     self.skill.append(skill_2)
@@ -31,30 +36,18 @@ def Skill_3_override(self):
     self.skill.append(skill_3)
 kimu.Skill_3 = Skill_3_override.__get__(kimu, Character)
 
-def skill_2_sound_override(self):
-    sound = load_wav('source\\sound\\sword.mp3')
-    sound.set_volume(64)
-    sound.play(1)
-asha.skill_2_sound = skill_2_sound_override.__get__(asha, Character)
-
-def skill_3_sound_override(self):
-    sound = load_wav('source\\sound\\buff.mp3')
-    sound.set_volume(64)
-    sound.play(1)
-asha.skill_3_sound = skill_3_sound_override.__get__(asha, Character)
-
-def Draw_turn_override(self):
-    kimu.illust.clip_draw(0, 550, 1350, 1350, 150, 150, 300, 300)
-    kimu.nameBox.clip_draw(125, 0, 125, 33, 150, 25,300,50)
-    kimu.namefont.draw(100, 24, self.name, (0, 0, 0))
-    kimu.namefont.draw(100, 26, self.name, (0, 0, 0))
-    kimu.namefont.draw(99, 25, self.name, (0, 0, 0))
-    kimu.namefont.draw(101, 25, self.name, (0, 0, 0))
-    kimu.namefont.draw(100, 25, self.name, (230, 230, 230))
-    kimu.skill_1_icon.clip_draw(0, 0, 32, 32, 850, 100, 100, 100)
-    kimu.skill_2_icon.clip_draw(0, 0, 32, 32, 975, 100, 100, 100)
-    kimu.skill_3_icon.clip_draw(0, 0, 32, 32, 1100, 100, 100, 100)
-kimu.Draw_turn = Draw_turn_override.__get__(kimu, Character)
+##def Draw_turn_override(self):
+    ##kimu.illust.clip_draw(0, 550, 1350, 1350, 150, 150, 300, 300)
+    ##kimu.nameBox.clip_draw(125, 0, 125, 33, 150, 25,300,50)
+    ##kimu.namefont.draw(100, 24, self.name, (0, 0, 0))
+    ##kimu.namefont.draw(100, 26, self.name, (0, 0, 0))
+    ##kimu.namefont.draw(99, 25, self.name, (0, 0, 0))
+    ##kimu.namefont.draw(101, 25, self.name, (0, 0, 0))
+    ##kimu.namefont.draw(100, 25, self.name, (230, 230, 230))
+    ##kimu.skill_1_icon.clip_draw(0, 0, 32, 32, 850, 100, 100, 100)
+    ##kimu.skill_2_icon.clip_draw(0, 0, 32, 32, 975, 100, 100, 100)
+    ##kimu.skill_3_icon.clip_draw(0, 0, 32, 32, 1100, 100, 100, 100)
+##.Draw_turn = Draw_turn_override.__get__(kimu, Character)
 
 def evolution_override(self):
     self.evo += 1

@@ -21,6 +21,11 @@ romes.skill_1_inform = f"적 단일 공격, {romes.status["atk"]}의 피해를 �
 romes.skill_2_inform = f"적 전체 공격, {romes.status["atk"]}의 피해를 줍니다."
 romes.skill_3_inform = f"적 전체 공격, {romes.status["atk"]}의 피해를 줍니다."
 
+romes.skill_2_sound = load_wav('source\\sound\\romes2.mp3')
+romes.skill_2_sound.set_volume(32)
+romes.skill_3_sound = load_wav('source\\sound\\romes3.mp3')
+romes.skill_3_sound.set_volume(32)
+
 def Skill_2_override(self):
     skill_2 = create_skill_2(self.x, self.y, self.flip)
     self.skill.append(skill_2)

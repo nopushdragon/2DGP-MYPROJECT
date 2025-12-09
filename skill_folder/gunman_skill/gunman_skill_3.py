@@ -32,7 +32,7 @@ def create_skill_3(x, y, flip):
 
     def apply_effect_override(self, target, atk):
         for t in target:
-            damage = atk*1.2 - t.status["def"]
+            damage = atk*1.2 -t.status["def"]/2
             if damage <= 10:
                 damage = 10
             t.status["nowhp"] -= damage

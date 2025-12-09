@@ -14,6 +14,11 @@ class Character:
     skill_2_inform = None
     skill_3_inform = None
 
+    skill_1_sound = load_wav('source\\sound\\스킬1.mp3')
+    skill_1_sound.set_volume(34)
+    skill_2_sound = None
+    skill_3_sound = None
+
     def __init__(self, anime, x, y, skill, status = None,frame=0, frameTimer=0.0, state="idle", flip=False, name = None, get = False):
                      # anime[0] = idle, anime[1] = walk, anime[2] = attack
         self.anime = anime
@@ -63,11 +68,11 @@ class Character:
                 self.frame = 0
                 self.attackMotionEnd = False
                 if self.state == "skill_1":
-                    self.skill_1_sound()
-                elif self.skill == "skill_2":
-                    self.skill_2_sound()
-                elif self.skill == "skill_3":
-                    self.skill_3_sound()
+                    self.skill_1_sound.play(1)
+                elif self.state == "skill_2":
+                    self.skill_2_sound.play(1)
+                elif self.state == "skill_3":
+                    self.skill_3_sound.play(1)
                 self.state = "using_skill"
 
         if not ((self.state == "skill_1" or self.state == "skill_2" or self.state == "skill_3") and self.frame == len(self.anime[2]) - 1):
@@ -93,15 +98,6 @@ class Character:
         pass
 
     def Skill_3(self):
-        pass
-
-    def skill_1_sound(self):
-        sound.skill_1_sound.play(1)
-
-    def skill_2_sound(self):
-        pass
-
-    def skill_3_sound(self):
         pass
 
     def Draw_turn(self):

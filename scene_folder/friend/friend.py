@@ -39,20 +39,27 @@ def handle_events():
         if event.type == SDL_MOUSEBUTTONDOWN:
             mx, my = event.x, HEIGHT - event.y
             cnt = 0
-            for _ in Characters:
-                if ((cnt < 3 and cnt * 160 + 750 <= mx <= cnt * 160 + 850 and 550 <= my <= 650) or
-                        (cnt < 6 and (cnt - 3) * 160 + 750 <= mx <= (cnt - 3) * 160 + 850 and 450 <= my <= 550)or
-                        (cnt < 9 and (cnt - 6) * 160 + 750 <= mx <= (cnt - 6) * 160 + 850 and 350 <= my <= 450)or
-                        (cnt < 12 and (cnt - 9) * 160 + 750 <= mx <= (cnt - 9) * 160 + 850 and 250 <= my <= 350)or
-                        (cnt < 15 and (cnt - 12) * 160 + 750 <= mx <= (cnt - 12) * 160 + 850 and 150 <= my <= 250)):
+            global choiceChar
+            for cnt, c in enumerate(Characters):
+                col = cnt % 3
+                row = cnt // 3
+                # 화면에 표시되는 최대 행(0..4)만 처리
+                if row >= 5:
+                    continue
+
+                # draw에서 사용한 중심 좌표와 크기에 맞춤
+                center_x = col * 160 + 800  # 기존 draw: cnt * 160 + 800
+                center_y = 600 - row * 100  # 기존 draw: 600,500,400,300,200
+                half_w = 50  # draw에서 사용한 폭 100 -> 반폭 50
+                half_h = 50  # draw에서 사용한 높이 100 -> 반높이 50
+
+                if center_x - half_w <= mx <= center_x + half_w and center_y - half_h <= my <= center_y + half_h:
                     sound.click_sound.play(1)
-                    global choiceChar
                     if choiceChar == cnt:
                         choiceChar = None
                     else:
-                        if (Characters[cnt].get == True):
+                        if c.get == True:
                             choiceChar = cnt
-                cnt += 1
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_ESCAPE:
                 fade.fade_out("home")
