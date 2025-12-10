@@ -4,12 +4,12 @@ from skill_folder.asha_skill.asha_skill_2 import create_skill_2
 from skill_folder.asha_skill.asha_skill_3 import create_skill_3
 
 asha = Character([
-    [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(1, 3)],
-    [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(3, 5)],
-    [load_image(f'source\\character\\asha\\asha01_0{i}.png') for i in range(5, 8)]
-], 100, 400, [],name = "아샤", get = True)
+    [load_image(f'source\\character\\asha\\asha04_0{i}.png') for i in range(1, 3)],
+    [load_image(f'source\\character\\asha\\asha04_0{i}.png') for i in range(3, 5)],
+    [load_image(f'source\\character\\asha\\asha04_0{i}.png') for i in range(5, 8)]
+], 100, 400, [],name = "아샤", get = True,flip = True)
 
-asha.status = {"nowhp": 100, "maxhp":100, "atk": 50, "def":20, "speed": 150, "condition":[], "origin_atk":50, "origin_def" : 12, "origin_speed":139}  # nowhp, maxhp, attack, speed
+asha.status = {"nowhp": 100, "maxhp":640, "atk": 50, "def":20, "speed": 150, "condition":[], "origin_atk":110, "origin_def" : 50, "origin_speed":180}  # nowhp, maxhp, attack, speed
 
 # ui에 필요한 리소스들
 asha.illust = load_image('source\\character\\asha\\hero_illust_09_Asha.png')

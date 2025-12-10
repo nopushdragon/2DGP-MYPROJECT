@@ -12,7 +12,7 @@ usueu = Character([
 
 usueu.illust = load_image('source\\character\\usueu\\hero_illust_20_Usuu.png')
 
-usueu.status = {"nowhp": 450, "maxhp":450, "atk": 30, "def":30, "speed": 52, "condition":[], "origin_atk":30, "origin_def" : 30, "origin_speed":52}  # nowhp, maxhp, attack, speed
+usueu.status = {"nowhp": 450, "maxhp":650, "atk": 30, "def":30, "speed": 52, "condition":[], "origin_atk":80, "origin_def" : 100, "origin_speed":165}  # nowhp, maxhp, attack, speed
 
 usueu.skill_1_icon = load_image(f'source\\skill_icon\\usueu\\kar_1302.png')
 usueu.skill_2_icon = load_image(f'source\\skill_icon\\usueu\\kar_1303.png')

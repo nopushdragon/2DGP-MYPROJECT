@@ -12,7 +12,7 @@ myau = Character([
 
 myau.illust = load_image('source\\character\\myau\\hero_illust_15_Myau.png')
 
-myau.status = {"nowhp": 500, "maxhp":500, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":100}  # nowhp, maxhp, attack, speed
+myau.status = {"nowhp": 500, "maxhp":720, "atk": 50, "def":20, "speed": 100, "condition":[], "origin_atk":100, "origin_def" : 100, "origin_speed":162}  # nowhp, maxhp, attack, speed
 
 myau.skill_1_icon = load_image(f'source\\skill_icon\\myau\\myau_1504.png')
 myau.skill_2_icon = load_image(f'source\\skill_icon\\myau\\klat_0801.png')

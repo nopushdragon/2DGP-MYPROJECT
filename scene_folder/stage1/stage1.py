@@ -8,6 +8,7 @@ from characters import Characters
 import fade
 import currency
 import sound
+import random
 
 from .stage1_enemys import enemys
 
@@ -33,12 +34,13 @@ def Reset(self):
     gamemanager.party[0].x = gamemanager.partylocate[0][0]
     gamemanager.party[0].y = gamemanager.partylocate[0][1]
     gamemanager.enemy.clear()
+    enemy_random_idx = random.sample(range(len(enemys)), 4)
     cnt = 0
-    for e in enemys:
-        gamemanager.enemy.append(e)
-        e.x = gamemanager.enemylocate[cnt][0]
-        e.y = gamemanager.enemylocate[cnt][1]
-        e.reset()
+    for e in enemy_random_idx:
+        gamemanager.enemy.append(enemys[e])
+        enemys[e].x = gamemanager.enemylocate[cnt][0]
+        enemys[e].y = gamemanager.enemylocate[cnt][1]
+        enemys[e].reset()
         cnt += 1
 
 

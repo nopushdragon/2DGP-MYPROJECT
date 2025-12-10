@@ -12,7 +12,7 @@ romes = Character([
 
 romes.illust = load_image('source\\character\\romes\\hero_illust_05_Romes.png')
 
-romes.status = {"nowhp": 370, "maxhp":370, "atk": 50, "def":20, "speed": 110, "condition":[], "origin_atk":50, "origin_def" : 20, "origin_speed":110}  # nowhp, maxhp, attack, speed
+romes.status = {"nowhp": 370, "maxhp":620, "atk": 50, "def":20, "speed": 110, "condition":[], "origin_atk":100, "origin_def" : 100, "origin_speed":172}  # nowhp, maxhp, attack, speed
 
 romes.skill_1_icon = load_image(f'source\\skill_icon\\romes\\romes_0501.png')
 romes.skill_2_icon = load_image(f'source\\skill_icon\\romes\\romes_0502.png')

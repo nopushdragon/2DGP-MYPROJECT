@@ -12,7 +12,7 @@ kimu = Character([
 
 kimu.illust = load_image('source\\character\\kimu\\hero_illust_04_Kimu.png')
 
-kimu.status = {"nowhp": 500, "maxhp":500, "atk": 50, "def":30, "speed": 92, "condition":[], "origin_atk":50, "origin_def" : 30, "origin_speed":92}  # nowhp, maxhp, attack, speed
+kimu.status = {"nowhp": 500, "maxhp":700, "atk": 50, "def":30, "speed": 92, "condition":[], "origin_atk":100, "origin_def" : 100, "origin_speed":170}  # nowhp, maxhp, attack, speed
 
 kimu.skill_1_icon = load_image(f'source\\skill_icon\\kimu\\kimu_0402.png')
 kimu.skill_2_icon = load_image(f'source\\skill_icon\\kimu\\kimu_0401.png')
